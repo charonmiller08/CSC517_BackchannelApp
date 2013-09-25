@@ -9,4 +9,8 @@ class User < ActiveRecord::Base
   validates :username, :presence => true
   validates :username, :uniqueness => true
 
+  def self.authenticate(username, password)
+    @user = User.find(["username = ? AND password = ?", username, password])
+    return @user
+  end
 end

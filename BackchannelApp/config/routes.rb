@@ -19,6 +19,8 @@ BackchannelApp::Application.routes.draw do
 
   resources :categories
 
+  resources :sessions, only: [:new, :create, :destroy]
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -69,6 +71,7 @@ BackchannelApp::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root :to => 'static_pages#home'
+
   match '/newuser', to: 'users#new', via: 'get'
   match '/signin', to:'sessions#new', via: 'get'
   match '/signout', to: 'sessions#destroy', via: 'delete'
