@@ -68,8 +68,10 @@ BackchannelApp::Application.routes.draw do
   #   end
 
   # You can have the root of your site routed with "root"
-  root :to => 'users#index'
-
+  root :to => 'static_pages#home'
+  match '/newuser', to: 'users#new', via: 'get'
+  match '/signin', to:'sessions#new', via: 'get'
+  match '/signout', to: 'sessions#destroy', via: 'delete'
   # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
