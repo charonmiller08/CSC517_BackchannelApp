@@ -1,4 +1,7 @@
 BackchannelApp::Application.routes.draw do
+  resources :user_roles
+
+
   resources :votes
 
 
@@ -65,7 +68,7 @@ BackchannelApp::Application.routes.draw do
   #   end
 
   # You can have the root of your site routed with "root"
-  root :to => 'categories#index'
+  root :to => 'users#index'
 
   # See how all your routes lay out with "rake routes"
 

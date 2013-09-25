@@ -23,10 +23,8 @@
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </div>
-  <div class="field">
-    <%= f.label :role %><br />
-    <%= f.text_field :role %>
-  </div>
+    <%= f.label :role %>
+    <%= select(:user, :user_role_id, UserRole.find(:all).collect{ |c| [c.role, c.id] }) %>
   <div class="actions">
     <%= f.submit %>
   </div>
