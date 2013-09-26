@@ -1,20 +1,21 @@
 class User < ActiveRecord::Base
-  attr_accessible :name, :password, :username
+  attr_accessible :password, :password_confirmation, :username
+  #attr_accessor :password
   has_many :posts
   has_many :votes
-  has_one :user_role
 
   before_save { |user| user.username = username.downcase }
 
-  validates :password, :presence => true
-  validates :name, :presence => true
+  validates :password, :confirmation => true
+  validates_length_of :password, :in => 6..20, :on => :create
+  #validates :name, :presence => true
   validates :username, :presence => true
-  validates :username, :uniqueness => true
+  validates :username, :uniqueness => true, :length => { :in => 3..20 }
 
   def self.authenticate(username, submitted_password)
-    user = User.find_by_username(username);
+    user = User.find_by_username(username)
     if(user && (user.password == submitted_password))
-        return true
+        return user
     end
     return nil if user.nil?
 

@@ -19,12 +19,8 @@
     <%= f.label :password %><br />
     <%= f.text_field :password %>
   </div>
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
     <%= f.label :role %>
-    <%= select(:user, :user_role_id, UserRole.find(:all).collect{ |c| [c.role, c.id] }) %>
+    <%= select(:user, :role,["Administrator", "Member"]) %>
   <div class="actions">
     <%= f.submit %>
   </div>

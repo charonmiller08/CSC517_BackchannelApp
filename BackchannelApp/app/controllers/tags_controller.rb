@@ -27,7 +27,7 @@ class TagsController < ApplicationController
     @tag = Tag.new
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html # login.html.erb
       format.json { render json: @tag }
     end
   end

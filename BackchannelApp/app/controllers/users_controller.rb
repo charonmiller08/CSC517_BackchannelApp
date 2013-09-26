@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_filter :save_login_state, :only => [:new, :create]
   # GET /users
   # GET /users.json
   def index
@@ -27,7 +28,7 @@ class UsersController < ApplicationController
     @user = User.new
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html # login.html.erb
       format.json { render json: @user }
     end
   end
@@ -41,6 +42,14 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(params[:user])
+    @user.role = "Member"
+    if @user.save
+      flash[:notice] = "You signed up successfully"
+      flash[:color] = "valid"
+    else
+      flash[:notice] = "Form is invalid"
+      flash[:color] = "invalid"
+    end
 
     respond_to do |format|
       if @user.save
@@ -51,6 +60,7 @@ class UsersController < ApplicationController
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
+    #render "new"
   end
 
   # PUT /users/1
