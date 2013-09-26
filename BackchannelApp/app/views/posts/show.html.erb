@@ -8,6 +8,10 @@
   <b>Content:</b>
   <%= @post.content %>
 </p>
+<p>
+  <b>Date Posted:</b>
+  <%= @post.created_at.to_s(:db) %>
+</p>
 
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
