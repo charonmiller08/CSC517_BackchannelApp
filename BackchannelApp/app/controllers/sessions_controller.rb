@@ -1,5 +1,4 @@
 class SessionsController < ApplicationController
-  before_filter :authenticate_user, :only => [:home]
   before_filter :save_login_state, :only => [:login, :login_attempt]
   def login
      render "login"
@@ -17,7 +16,6 @@ class SessionsController < ApplicationController
       #puts "should have rendered."
       redirect_to home_url
     else
-      puts "failed"
       flash[:notice] = "Invalid Username or Password"
       flash[:color]= "invalid"
       render "login"
