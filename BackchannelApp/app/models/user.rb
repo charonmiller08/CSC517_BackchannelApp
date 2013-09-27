@@ -16,8 +16,8 @@ class User < ActiveRecord::Base
     user = User.find_by_username(username)
     if(user && (user.password == submitted_password))
         return user
+    else
+        return false
     end
-    return nil if user.nil?
-
   end
 end
