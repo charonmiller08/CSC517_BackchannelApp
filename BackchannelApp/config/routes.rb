@@ -70,16 +70,17 @@ BackchannelApp::Application.routes.draw do
   #   end
 
   # You can have the root of your site routed with "root"
-  root :to => "sessions#login"
+  root :to => "static_pages#home"
   match "signup", :to => "users#new"
   match "login", :to => "sessions#login"
   match "logout", :to => "sessions#logout"
+  match "login_attempt", :to => "sessions#login_attempt"
   match "home", :to => "static_pages#home"
-  match "profile", :to => "sessions#profile"
-  match "setting", :to => "sessions#setting"
+  match "search", :to => "static_pages#search"
+
   # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
-  # match ':controller(/:action(/:id))(.:format)'
+  match ':controller(/:action(/:id))(.:format)'
 end

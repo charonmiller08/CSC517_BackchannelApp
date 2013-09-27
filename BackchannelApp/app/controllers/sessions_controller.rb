@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
       #puts authorized_user.id
       flash[:notice] = "Wow Welcome again, you logged in as {authorized_user.username}"
       #puts "should have rendered."
-      render "home"
+      redirect_to home_url
     else
       puts "failed"
       flash[:notice] = "Invalid Username or Password"
@@ -26,11 +26,9 @@ class SessionsController < ApplicationController
 
   def logout
     session[:user_id] = nil
-    redirect_to :action => 'login'
+    redirect_to home_url
   end
 
-  def home
-    render "home"
-  end
+
 
 end

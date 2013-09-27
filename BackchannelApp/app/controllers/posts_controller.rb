@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_filter :save_login_state, :only => [:index, :show]
   # GET /posts
   # GET /posts.json
   def index
