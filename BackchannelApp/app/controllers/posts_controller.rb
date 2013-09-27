@@ -4,6 +4,14 @@ class PostsController < ApplicationController
   def index
     @posts = Post.all
 
+    search_class = params[:search_class]
+    search_string = params[:search_string]
+    if(search_string != nil)
+      if(search_class == Tag || search_class == Content)
+        @posts = Post.where('content LIKE ?', '%'+search_string+'%').all
+      end
+    end
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @posts }
@@ -41,7 +49,8 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = Post.new(params[:post])
-
+    # TODO retrieve authenticated user id and add to post
+    @post.user_id = 1
     respond_to do |format|
       if @post.save
         format.html { redirect_to @post, notice: 'Post was successfully created.' }
