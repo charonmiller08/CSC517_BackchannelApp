@@ -1,5 +1,7 @@
 class SessionsController < ApplicationController
   before_filter :save_login_state, :only => [:login, :login_attempt]
+  after_filter :store_location
+
   def login
     render "login"
   end

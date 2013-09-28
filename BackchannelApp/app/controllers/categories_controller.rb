@@ -1,6 +1,7 @@
 class CategoriesController < ApplicationController
   before_filter :make_user_login, :except => [:index]
   before_filter :is_admin?, :except => [:index, :show]
+  after_filter :store_location
 
   # GET /categories
   # GET /categories.json
@@ -11,7 +12,7 @@ class CategoriesController < ApplicationController
     else
         @categories = Category.all
         respond_to do |format|
-              format.html #index.html.erb
+              format.html # index.html.erb
               format.json { render json: @categories }
         end
     end

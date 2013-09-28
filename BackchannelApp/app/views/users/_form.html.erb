@@ -20,7 +20,7 @@
     <%= f.text_field :password %>
   </div>
     <%= f.label :role %>
-    <%= select(:user, :role,["Administrator", "Member"]) %>
+    <%= select(:user, :role,@role_options) %>
   <div class="actions">
     <%= f.submit %>
   </div>

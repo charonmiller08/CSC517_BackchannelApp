@@ -6,5 +6,8 @@ module SessionsHelper
 
   def store_location
     session[:return_to] = request.url if request.get?
+    puts "url_back"
+    puts session[:return_to]
+
   end
 end

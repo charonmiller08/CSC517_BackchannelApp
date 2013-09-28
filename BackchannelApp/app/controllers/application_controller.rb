@@ -15,13 +15,13 @@ class ApplicationController < ActionController::Base
   def is_admin?
     determine_user_role
     if @admin_user || @superadmin_user
-      puts "administratorrrr"
       return true
     else
-      puts "testing"
+      #redirect_back_or(home_url)
       return false
     end
   end
+
   def determine_user_role
     if logged_in?
       if @current_user.role == "Administrator"

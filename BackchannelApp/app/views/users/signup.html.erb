@@ -7,7 +7,6 @@
       <p> Username:</br> <%= f.text_field :username%> </p>
       <p> Password:</br> <%= f.password_field :password%></p>
       <p> Password Confirmation:</br> <%= f.password_field :password_confirmation%> </p>
-
       <%= f.submit :Signup %>
   <% end %>
   <% if @user.errors.any? %>

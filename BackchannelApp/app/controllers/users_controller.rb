@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   before_filter :save_login_state, :only => [:signup, :create]
-  before_filter :make_user_login, :only  => [:index, :new, :show, :edit, :destroy, :update]
+  before_filter :make_user_login, :except  => [:signup, :create]
+  before_filter :is_admin?, :only =>[:new]
+  after_filter :store_location
 
 
 
@@ -36,17 +38,30 @@ class UsersController < ApplicationController
     @user = User.new
 
     respond_to do |format|
-      format.html #signup.html.erb
+      format.html # new.html.erb
       format.json { render json: @user }
     end
   end
-  # GET /users/new_as
-  # GET /users/new_as.json
+  # GET /users/new
+  # GET /users/new.json
   def new
+    if is_admin?
+      if @superadmin_user
+        @role_options = ["Administrator", "Member"] ;
+      else
+      @role_options = ["Member"]
+      end
+    else
+      redirect_back_or(home_url)
+      return
+    end
+
+
+
     @user = User.new
 
     respond_to do |format|
-      format.html #new.html.erb
+      format.html # new.html.erb
       format.json { render json: @user }
     end
   end
@@ -59,26 +74,15 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
+
     @user = User.new(params[:user])
-    #@user.role = "Member"
-    if @user.save
-      flash[:notice] = "You signed up successfully"
-      flash[:color] = "valid"
-    else
-      flash[:notice] = "Form is invalid"
-      flash[:color] = "invalid"
-    end
 
     respond_to do |format|
       if @user.save
         format.html { redirect_to home_url, notice: 'User was successfully created.' }
         format.json { render json: @user, status: :created, location: @user }
       else
-        if @admin_user
-          format.html { render action: "new" }
-        else
-          format.html { render action: "signup" }
-        end
+        format.html { render "new"}
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end

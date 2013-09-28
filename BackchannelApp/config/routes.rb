@@ -1,7 +1,4 @@
 BackchannelApp::Application.routes.draw do
-  resources :user_roles
-
-
   resources :votes
 
 
@@ -72,6 +69,7 @@ BackchannelApp::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root :to => "static_pages#home"
   match "signup", :to => "users#signup"
+  #match "users/new", :to => "users#new"
   match "categories_admin", :to => "categories#index_as_admin"
   match "login", :to => "sessions#login"
   match "logout", :to => "sessions#logout"
@@ -83,5 +81,5 @@ BackchannelApp::Application.routes.draw do
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
-  match ':controller(/:action(/:id))(.:format)'
+  #match ':controller(/:action(/:id))(.:format)'
 end
