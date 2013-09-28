@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  include SessionsHelper
 
   protected
   def authenticate_user
@@ -12,16 +13,23 @@ class ApplicationController < ActionController::Base
       return false
     end
   end
+
   def authenticate_user_role
-    if @current_user.role == "Administrator" || @current_user.role == "Super Administrator"
-      @admin_user = true
-      return true
+    if @current_user
+      if @current_user.role == "Administrator" || @current_user.role == "Super Administrator"
+        @admin_user = true
+        return true
+      else
+        @admin_user = false
+        redirect_back_or home_url
+        return false
+      end
     else
       @admin_user = false
-      #redirect_to home_url
-      return false
+      return true
     end
   end
+
   def save_login_state
     if session[:user_id]
       redirect_to(:controller => 'static_pages', :action => 'home')

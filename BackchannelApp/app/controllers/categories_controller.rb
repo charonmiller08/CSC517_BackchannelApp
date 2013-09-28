@@ -1,14 +1,21 @@
 class CategoriesController < ApplicationController
+  before_filter :store_location, :except =>  [:new, :create, :edit, :destroy, :update]
   before_filter :authenticate_user, :only => [:new, :create, :edit, :destroy, :update]
-  #before_filter :authenticate_user_role, :only => [:new, :create, :edit, :destroy, :update]
+  before_filter :authenticate_user_role #, :only => [:new, :create, :edit, :destroy, :update]
   # GET /categories
   # GET /categories.json
   def index
     @categories = Category.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @categories }
+    if @admin_user
+        respond_to do |format|
+          format.html # index_as_admin.html.erb
+          format.json { render json: @categories }
+        end
+    else
+        respond_to do |format|
+          format.html # index.html.erb
+          format.json { render json: @categories }
+        end
     end
   end
 
@@ -26,12 +33,12 @@ class CategoriesController < ApplicationController
   # GET /categories/new
   # GET /categories/new.json
   def new
-    @category = Category.new
+        @category = Category.new
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @category }
-    end
+        respond_to do |format|
+        format.html # new.html.erb
+        format.json { render json: @category }
+        end
   end
 
   # GET /categories/1/edit
@@ -42,16 +49,20 @@ class CategoriesController < ApplicationController
   # POST /categories
   # POST /categories.json
   def create
-    @category = Category.new(params[:category])
+    if (@admin_user)
+        @category = Category.new(params[:category])
 
-    respond_to do |format|
-      if @category.save
-        format.html { redirect_to @category, notice: 'Category was successfully created.' }
-        format.json { render json: @category, status: :created, location: @category }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @category.errors, status: :unprocessable_entity }
-      end
+        respond_to do |format|
+          if @category.save
+            format.html { redirect_to @category, notice: 'Category was successfully created.' }
+            format.json { render json: @category, status: :created, location: @category }
+          else
+            format.html { render action: "new" }
+            format.json { render json: @category.errors, status: :unprocessable_entity }
+          end
+        end
+    else
+       redirect_to categories_url
     end
   end
 
