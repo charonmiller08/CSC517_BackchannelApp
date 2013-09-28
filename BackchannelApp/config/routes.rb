@@ -71,7 +71,8 @@ BackchannelApp::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root :to => "static_pages#home"
-  match "signup", :to => "users#new"
+  match "signup", :to => "users#signup"
+  match "categories_admin", :to => "categories#index_as_admin"
   match "login", :to => "sessions#login"
   match "logout", :to => "sessions#logout"
   match "login_attempt", :to => "sessions#login_attempt"

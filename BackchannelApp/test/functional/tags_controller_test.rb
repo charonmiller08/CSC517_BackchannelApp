@@ -11,8 +11,8 @@ class TagsControllerTest < ActionController::TestCase
     assert_not_nil assigns(:tags)
   end
 
-  test "should get new" do
-    get :new
+  test "should get new_as" do
+    get :new_as
     assert_response :success
   end
 

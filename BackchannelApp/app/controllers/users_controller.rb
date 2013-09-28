@@ -1,12 +1,20 @@
 class UsersController < ApplicationController
-  before_filter :save_login_state, :only => [:new, :create]
-  before_filter :authenticate_user, :only  => [:show, :edit, :destroy, :index, :update]
-  before_filter :authenticate_user_role, :only => [:index]
+  before_filter :save_login_state, :only => [:signup, :create]
+  before_filter :make_user_login, :only  => [:index, :new, :show, :edit, :destroy, :update]
+
+
+
+
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
-
+    if is_admin?
+      @users = User.all
+    elsif is_member?
+      @users = [@current_user]
+    else
+      redirect_to "signup"
+    end
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @users }
@@ -24,13 +32,21 @@ class UsersController < ApplicationController
     end
   end
 
-  # GET /users/new
-  # GET /users/new.json
+  def signup
+    @user = User.new
+
+    respond_to do |format|
+      format.html #signup.html.erb
+      format.json { render json: @user }
+    end
+  end
+  # GET /users/new_as
+  # GET /users/new_as.json
   def new
     @user = User.new
 
     respond_to do |format|
-      format.html # login.html.erb
+      format.html #new.html.erb
       format.json { render json: @user }
     end
   end
@@ -44,7 +60,7 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(params[:user])
-    @user.role = "Member"
+    #@user.role = "Member"
     if @user.save
       flash[:notice] = "You signed up successfully"
       flash[:color] = "valid"
@@ -58,11 +74,15 @@ class UsersController < ApplicationController
         format.html { redirect_to home_url, notice: 'User was successfully created.' }
         format.json { render json: @user, status: :created, location: @user }
       else
-        format.html { render action: "new" }
+        if @admin_user
+          format.html { render action: "new" }
+        else
+          format.html { render action: "signup" }
+        end
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
-    #render "new"
+    #render "new_as"
   end
 
   # PUT /users/1

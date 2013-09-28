@@ -3,30 +3,61 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
 
   protected
-  def authenticate_user
-    if session[:user_id]
-      # set current user object to @current_user object variable
-      @current_user = User.find session[:user_id]
+  def is_member?
+    determine_user_role
+    if @member
+      puts "membermemberm"
       return true
     else
-      redirect_to(:controller => 'sessions', :action => 'login')
       return false
     end
   end
-
-  def authenticate_user_role
-    if @current_user
-      if @current_user.role == "Administrator" || @current_user.role == "Super Administrator"
+  def is_admin?
+    determine_user_role
+    if @admin_user || @superadmin_user
+      puts "administratorrrr"
+      return true
+    else
+      puts "testing"
+      return false
+    end
+  end
+  def determine_user_role
+    if logged_in?
+      if @current_user.role == "Administrator"
         @admin_user = true
-        return true
+        @superadmin_user = false
+        @member = false
+      elsif @current_user.role == "Super Administrator"
+        @superadmin_user = true
+        @admin_user = false
+        @member = false
       else
         @admin_user = false
-        redirect_back_or home_url
-        return false
+        @superadmin_user = false
+        @member = true
       end
-    else
+    else         #else not logged in
       @admin_user = false
+      @superadmin_user = false
+      @member = false
+    end
+  end
+
+  def logged_in?
+    if session[:user_id]
+      # set current user object to @current_user object variable
+      @current_user = User.find session[:user_id]
+      #authenticate_user_role
       return true
+    else
+
+      return false
+    end
+  end
+  def make_user_login
+    if !logged_in?
+      redirect_to(:controller => 'sessions', :action => 'login')
     end
   end
 

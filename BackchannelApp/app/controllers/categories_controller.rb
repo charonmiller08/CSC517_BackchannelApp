@@ -1,33 +1,40 @@
 class CategoriesController < ApplicationController
-  before_filter :store_location, :except =>  [:new, :create, :edit, :destroy, :update]
-  before_filter :authenticate_user, :only => [:new, :create, :edit, :destroy, :update]
-  before_filter :authenticate_user_role #, :only => [:new, :create, :edit, :destroy, :update]
+  before_filter :make_user_login, :except => [:index]
+  before_filter :is_admin?, :except => [:index, :show]
+
   # GET /categories
   # GET /categories.json
+
   def index
-    @categories = Category.all
-    if @admin_user
-        respond_to do |format|
-          format.html # index_as_admin.html.erb
-          format.json { render json: @categories }
-        end
+    if is_admin?
+        redirect_to categories_admin_url
     else
+        @categories = Category.all
         respond_to do |format|
-          format.html # index.html.erb
-          format.json { render json: @categories }
+              format.html #index.html.erb
+              format.json { render json: @categories }
         end
     end
+  end
+  def index_as_admin
+      @categories = Category.all
+      respond_to do |format|
+        format.html #index_as_admin.html.erb
+        format.json { render json: @categories }
+      end
   end
 
   # GET /categories/1
   # GET /categories/1.json
   def show
+
     @category = Category.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @category }
     end
+
   end
 
   # GET /categories/new
@@ -49,7 +56,6 @@ class CategoriesController < ApplicationController
   # POST /categories
   # POST /categories.json
   def create
-    if (@admin_user)
         @category = Category.new(params[:category])
 
         respond_to do |format|
@@ -61,9 +67,6 @@ class CategoriesController < ApplicationController
             format.json { render json: @category.errors, status: :unprocessable_entity }
           end
         end
-    else
-       redirect_to categories_url
-    end
   end
 
   # PUT /categories/1

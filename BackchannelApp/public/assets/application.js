@@ -246,10 +246,10 @@ jQuery.fn = jQuery.prototype = {
 	},
 
 	// Take an array of elements and push it onto the stack
-	// (returning the new matched element set)
+	// (returning the new_as matched element set)
 	pushStack: function( elems ) {
 
-		// Build a new jQuery matched element set
+		// Build a new_as jQuery matched element set
 		var ret = jQuery.merge( this.constructor(), elems );
 
 		// Add the old object onto the stack (as a reference)
@@ -898,7 +898,7 @@ jQuery.extend({
 		var ret, name,
 			old = {};
 
-		// Remember the old values, and insert the new ones
+		// Remember the old values, and insert the new_as ones
 		for ( name in options ) {
 			old[ name ] = elem.style[ name ];
 			elem.style[ name ] = options[ name ];
@@ -1898,7 +1898,7 @@ getText = Sizzle.getText = function( elem ) {
 		}
 	} else if ( nodeType === 1 || nodeType === 9 || nodeType === 11 ) {
 		// Use textContent for elements
-		// innerText usage removed for consistency of new lines (see #11153)
+		// innerText usage removed for consistency of new_as lines (see #11153)
 		if ( typeof elem.textContent === "string" ) {
 			return elem.textContent;
 		} else {
@@ -2327,7 +2327,7 @@ Expr = Sizzle.selectors = {
 
 		"text": function( elem ) {
 			var attr;
-			// IE6 and 7 will map elem.type to 'text' for new HTML5 types (search, etc)
+			// IE6 and 7 will map elem.type to 'text' for new_as HTML5 types (search, etc)
 			// use getAttribute instead to test this case
 			return elem.nodeName.toLowerCase() === "input" &&
 				elem.type === "text" &&
@@ -2391,7 +2391,7 @@ for ( i in { submit: true, reset: true } ) {
 	Expr.pseudos[ i ] = createButtonPseudo( i );
 }
 
-// Easy API for creating new setFilters
+// Easy API for creating new_as setFilters
 function setFilters() {}
 setFilters.prototype = Expr.filters = Expr.pseudos;
 Expr.setFilters = new setFilters();
@@ -3593,7 +3593,7 @@ function internalData( elem, name, data, pvt /* Internal Use Only */ ){
 	}
 
 	if ( !id ) {
-		// Only DOM nodes need a new unique ID for each element since their data
+		// Only DOM nodes need a new_as unique ID for each element since their data
 		// ends up in the global cache
 		if ( isNode ) {
 			id = elem[ internalKey ] = core_deletedIds.pop() || jQuery.guid++;
@@ -4561,7 +4561,7 @@ if ( !getSetAttribute ) {
 	// This fixes almost every IE6/7 issue
 	nodeHook = {
 		set: function( elem, value, name ) {
-			// Set the existing or create a new attribute node
+			// Set the existing or create a new_as attribute node
 			var ret = elem.getAttributeNode( name );
 			if ( !ret ) {
 				elem.setAttributeNode(
@@ -5360,7 +5360,7 @@ jQuery.removeEvent = document.removeEventListener ?
 	};
 
 jQuery.Event = function( src, props ) {
-	// Allow instantiation without the 'new' keyword
+	// Allow instantiation without the 'new_as' keyword
 	if ( !(this instanceof jQuery.Event) ) {
 		return new jQuery.Event( src, props );
 	}
@@ -6185,7 +6185,7 @@ jQuery.fn.extend({
 			}),
 			i = 0;
 
-		// Make the changes, replacing each context element with the new content
+		// Make the changes, replacing each context element with the new_as content
 		this.domManip( arguments, function( elem ) {
 			var next = args[ i++ ],
 				parent = args[ i++ ];
@@ -6198,10 +6198,10 @@ jQuery.fn.extend({
 				jQuery( this ).remove();
 				parent.insertBefore( elem, next );
 			}
-		// Allow new content to include elements from the context set
+		// Allow new_as content to include elements from the context set
 		}, true );
 
-		// Force removal if there was no new content (e.g., from empty arguments)
+		// Force removal if there was no new_as content (e.g., from empty arguments)
 		return i ? this : this.remove();
 	},
 
@@ -7111,7 +7111,7 @@ if ( window.getComputedStyle ) {
 				minWidth = style.minWidth;
 				maxWidth = style.maxWidth;
 
-				// Put in the new values to get a computed value out
+				// Put in the new_as values to get a computed value out
 				style.minWidth = style.maxWidth = style.width = ret;
 				ret = computed.width;
 
@@ -7155,7 +7155,7 @@ if ( window.getComputedStyle ) {
 			rs = elem.runtimeStyle;
 			rsLeft = rs && rs.left;
 
-			// Put in the new values to get a computed value out
+			// Put in the new_as values to get a computed value out
 			if ( rsLeft ) {
 				rs.left = elem.currentStyle.left;
 			}
@@ -7279,7 +7279,7 @@ function css_defaultDisplay( nodeName ) {
 				.css( "cssText", "display:block !important" )
 			).appendTo( doc.documentElement );
 
-			// Always write a new HTML skeleton so Webkit and Firefox don't choke on reuse
+			// Always write a new_as HTML skeleton so Webkit and Firefox don't choke on reuse
 			doc = ( iframe[0].contentWindow || iframe[0].contentDocument ).document;
 			doc.write("<!doctype html><html><body>");
 			doc.close();
@@ -7368,7 +7368,7 @@ if ( !jQuery.support.opacity ) {
 				}
 			}
 
-			// otherwise, set new filter values
+			// otherwise, set new_as filter values
 			style.filter = ralpha.test( filter ) ?
 				filter.replace( ralpha, opacity ) :
 				filter + " " + opacity;
@@ -7968,7 +7968,7 @@ jQuery.extend({
 					if ( map ) {
 						if ( state < 2 ) {
 							for ( code in map ) {
-								// Lazy-add the new callback in a way that preserves old ones
+								// Lazy-add the new_as callback in a way that preserves old ones
 								statusCode[ code ] = [ statusCode[ code ], map[ code ] ];
 							}
 						} else {
@@ -8033,7 +8033,7 @@ jQuery.extend({
 		// We can fire global events as of now if asked to
 		fireGlobals = s.global;
 
-		// Watch for a new set of requests
+		// Watch for a new_as set of requests
 		if ( fireGlobals && jQuery.active++ === 0 ) {
 			jQuery.event.trigger("ajaxStart");
 		}
@@ -8661,7 +8661,7 @@ if ( xhrSupported ) {
 			return {
 				send: function( headers, complete ) {
 
-					// Get a new xhr
+					// Get a new_as xhr
 					var handle, i,
 						xhr = s.xhr();
 

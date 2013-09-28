@@ -1,5 +1,5 @@
 class StaticPagesController < ApplicationController
-  #before_filter :authenticate_user, :only => [:home, :search]
+  #before_filter :authenticate_user_role, :except => [:login]
   def search
        render "search"
   end

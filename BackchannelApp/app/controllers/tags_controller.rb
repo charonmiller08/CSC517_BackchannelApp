@@ -21,8 +21,8 @@ class TagsController < ApplicationController
     end
   end
 
-  # GET /tags/new
-  # GET /tags/new.json
+  # GET /tags/new_as
+  # GET /tags/new_as.json
   def new
     @tag = Tag.new
 

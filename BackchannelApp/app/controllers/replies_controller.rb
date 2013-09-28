@@ -22,8 +22,8 @@ class RepliesController < ApplicationController
     end
   end
 
-  # GET /replies/new
-  # GET /replies/new.json
+  # GET /replies/new_as
+  # GET /replies/new_as.json
   def new
     @reply = Reply.new
 

@@ -30,8 +30,8 @@ class PostsController < ApplicationController
     end
   end
 
-  # GET /posts/new
-  # GET /posts/new.json
+  # GET /posts/new_as
+  # GET /posts/new_as.json
   def new
     @post = Post.new
 

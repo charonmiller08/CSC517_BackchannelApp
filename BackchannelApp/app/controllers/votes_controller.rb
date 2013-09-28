@@ -21,8 +21,8 @@ class VotesController < ApplicationController
     end
   end
 
-  # GET /votes/new
-  # GET /votes/new.json
+  # GET /votes/new_as
+  # GET /votes/new_as.json
   def new
     @vote = Vote.new
 
