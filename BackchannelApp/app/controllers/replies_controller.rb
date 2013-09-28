@@ -1,4 +1,5 @@
 class RepliesController < ApplicationController
+  before_filter :authenticate_user, :only => [:new, :create, :edit, :destroy, :update]
   # GET /replies
   # GET /replies.json
   def index

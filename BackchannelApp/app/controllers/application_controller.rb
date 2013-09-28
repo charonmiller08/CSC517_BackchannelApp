@@ -1,8 +1,5 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-def get_user_type
-
-end
 
   protected
   def authenticate_user
@@ -12,6 +9,16 @@ end
       return true
     else
       redirect_to(:controller => 'sessions', :action => 'login')
+      return false
+    end
+  end
+  def authenticate_user_role
+    if @current_user.role == "Administrator" || @current_user.role == "Super Administrator"
+      @admin_user = true
+      return true
+    else
+      @admin_user = false
+      #redirect_to home_url
       return false
     end
   end

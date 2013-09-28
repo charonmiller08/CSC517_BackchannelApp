@@ -1,4 +1,6 @@
 class CategoriesController < ApplicationController
+  before_filter :authenticate_user, :only => [:new, :create, :edit, :destroy, :update]
+  #before_filter :authenticate_user_role, :only => [:new, :create, :edit, :destroy, :update]
   # GET /categories
   # GET /categories.json
   def index
