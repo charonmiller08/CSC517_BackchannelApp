@@ -1,5 +1,6 @@
 class CategoriesController < ApplicationController
-  before_filter :make_user_login, :except => [:index]
+  #include ApplicationHelper
+  before_filter :make_user_login, :except => [:index, :show]
   before_filter :is_admin?, :except => [:index, :show]
   after_filter :store_location
 
@@ -7,22 +8,11 @@ class CategoriesController < ApplicationController
   # GET /categories.json
 
   def index
-    if is_admin?
-        redirect_to categories_admin_url
-    else
-        @categories = Category.all
-        respond_to do |format|
-              format.html # index.html.erb
-              format.json { render json: @categories }
-        end
+    @categories = Category.all
+    respond_to do |format|
+          format.html # index.html.erb
+          format.json { render json: @categories }
     end
-  end
-  def index_as_admin
-      @categories = Category.all
-      respond_to do |format|
-        format.html #index_as_admin.html.erb
-        format.json { render json: @categories }
-      end
   end
 
   # GET /categories/1

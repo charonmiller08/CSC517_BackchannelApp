@@ -15,6 +15,28 @@
   <%= @user.role %>
 </p>
 
+<p>
+  <b>Date created:</b>
+  <%= @user.created_at %>
+</p>
+
+<p>
+  <b>Number of posts:</b>
+  <%= %>
+</p>
+
+<p>
+  <b>Number of votes for others posts:</b>
+  <%= %>
+</p>
+
+<p>
+  <b>Number of votes on your posts:</b>
+  <%= %>
+</p>
+
+
+
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

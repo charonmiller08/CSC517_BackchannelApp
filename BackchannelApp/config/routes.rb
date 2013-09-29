@@ -19,6 +19,7 @@ BackchannelApp::Application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
 
 
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -67,15 +68,13 @@ BackchannelApp::Application.routes.draw do
   #   end
 
   # You can have the root of your site routed with "root"
-  root :to => "static_pages#home"
+  root :to => "sessions#home"
   match "signup", :to => "users#signup"
-  #match "users/new", :to => "users#new"
-  match "categories_admin", :to => "categories#index_as_admin"
   match "login", :to => "sessions#login"
   match "logout", :to => "sessions#logout"
   match "login_attempt", :to => "sessions#login_attempt"
-  match "home", :to => "static_pages#home"
-  match "search", :to => "static_pages#search"
+  match "home", :to => "sessions#home"
+  match "search", :to => "sessions#search"
 
   # See how all your routes lay out with "rake routes"
 

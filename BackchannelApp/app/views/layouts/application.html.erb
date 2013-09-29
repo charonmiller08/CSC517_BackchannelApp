@@ -8,12 +8,16 @@
 </head>
 <body>
 <h1> Online Backchannel App </h1>
+<h2> Welcome <%= @current_user.username if @current_user %></h2>
 <%= yield %>
 <br>
+
 <br>
 
- <%= link_to "Show categories", categories_url  %>
+    <%= link_to "Search", search_url  %>
+    <%= link_to "Make a new Post", new_post_url if @current_user%>
 </body>
 <p>
-  <f1><%= link_to "Search", search_url %> <%= link_to "Login", login_url %> <%= link_to "Log out", logout_url  %></f1></p>
+  <f1><%= link_to "Home", home_url if !@home %>
+    <%= link_to "Profile", @current_user if @current_user %> <%= link_to "Sign up or Login", login_url if !@current_user%> <%= link_to "Log out", logout_url if @current_user%></f1></p>
 </html>

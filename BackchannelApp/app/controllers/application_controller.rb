@@ -1,23 +1,30 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   include SessionsHelper
+  before_filter :logged_in?, :except => [:logged_in?, :save_login_state]
 
+  helper_method :is_admin?
+  helper_method :is_member?
+  helper_method :logged_in?
+
+  before_filter :is_current_page_home?
   protected
+  def is_current_page_home?
+    puts "url_home"
+    puts request.url
+    if request.url == "http://127.0.0.1:3000/"
+      @home = true
+    end
+  end
   def is_member?
     determine_user_role
-    if @member
-      puts "membermemberm"
-      return true
-    else
-      return false
-    end
+
   end
   def is_admin?
     determine_user_role
     if @admin_user || @superadmin_user
       return true
     else
-      #redirect_back_or(home_url)
       return false
     end
   end
@@ -51,7 +58,6 @@ class ApplicationController < ActionController::Base
       #authenticate_user_role
       return true
     else
-
       return false
     end
   end

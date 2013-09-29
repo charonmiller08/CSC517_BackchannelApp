@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_filter :save_login_state, :only => [:signup, :create]
   before_filter :make_user_login, :except  => [:signup, :create]
-  before_filter :is_admin?, :only =>[:new]
+  #before_filter :is_admin?, :only =>[:new]
   after_filter :store_location
 
 
@@ -10,12 +10,14 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
+    @users = User.all
     if is_admin?
       @users = User.all
     elsif is_member?
-      @users = [@current_user]
+      #@users = [@current_user]
     else
-      redirect_to "signup"
+
+      #redirect_to "signup"
     end
     respond_to do |format|
       format.html # index.html.erb
@@ -27,6 +29,12 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
+    if !is_admin?
+      if !(@user == @current_user)
+        redirect_to @current_user
+        return
+      end
+    end
 
     respond_to do |format|
       format.html # show.html.erb
@@ -47,7 +55,7 @@ class UsersController < ApplicationController
   def new
     if is_admin?
       if @superadmin_user
-        @role_options = ["Administrator", "Member"] ;
+        @role_options = ["Administrator", "Member"]
       else
       @role_options = ["Member"]
       end
@@ -69,24 +77,33 @@ class UsersController < ApplicationController
   # GET /users/1/edit
   def edit
     @user = User.find(params[:id])
+    @role_options = ["Member"]
+    if is_admin?
+      if @superadmin_user
+        @role_options = ["Administrator", "Member"] ;
+      end
+
+    else
+      @user = @current_user
+    end
   end
 
   # POST /users
   # POST /users.json
   def create
-
     @user = User.new(params[:user])
-
+    if !is_admin?
+      @user.role = "Member"
+    end
     respond_to do |format|
       if @user.save
-        format.html { redirect_to home_url, notice: 'User was successfully created.' }
-        format.json { render json: @user, status: :created, location: @user }
+          format.html { redirect_to @user, notice: 'User was successfully created.'}
+          format.json { render json: @user, status: :created, location: @user }
       else
         format.html { render "new"}
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
-    #render "new_as"
   end
 
   # PUT /users/1
@@ -109,6 +126,27 @@ class UsersController < ApplicationController
   # DELETE /users/1.json
   def destroy
     @user = User.find(params[:id])
+    if is_admin?
+       if @user.role == "Super Administrator"
+         flash[:notice] = "The Super Administrator cannot be deleted"
+         redirect_to @user
+         return
+       end
+       if !((@user.role == "Administrator") && @superadmin_user)
+         if !(@current_user == @user)
+           flash[:notice] = "Only the super administrator can delete other administrators"
+           redirect_to @user
+           return
+         end
+       end
+    else
+      if !(@current_user == @user)
+        flash[:notice] = "You do not have permission to delete this user!"
+        redirect_to @current_user
+        return
+      end
+    end
+    session.destroy
     @user.destroy
 
     respond_to do |format|
