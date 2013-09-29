@@ -31,9 +31,9 @@
         <td><%= User.find(post.user_id).username %></td>
         <td><%= 3 %></td>
         <td><%= post.updated_at %></td>
-        <td><%= link_to 'Vote', post %></td>
+        <td><%= link_to 'Vote', post if !is_my_post?(post.user_id) %></td>
         <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) if is_admin? || (@current_user &&( post.user_id == @current_user.id))%></td>
+        <td><%= link_to 'Edit', edit_post_path(post) if is_admin? || is_my_post?(post.user_id)%></td>
         <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } if is_admin? || (@current_user && (post.user_id == @current_user.id))%></td>
       </tr>
   <% end %>

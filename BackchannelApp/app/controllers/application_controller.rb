@@ -61,6 +61,7 @@ class ApplicationController < ActionController::Base
       return false
     end
   end
+
   def make_user_login
     if !logged_in?
       redirect_to(:controller => 'sessions', :action => 'login')

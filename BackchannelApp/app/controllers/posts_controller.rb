@@ -1,9 +1,22 @@
 class PostsController < ApplicationController
   before_filter :make_user_login, :only => [:new, :create, :edit, :destroy, :update]
   before_filter :logged_in?, :only => [:index, :new, :create,:edit, :destroy, :update]
+
+  helper_method :is_my_post?
   # GET /posts
   # GET /posts.json
+  def is_my_post?(postid)
+    if @current_user
+      if @current_user.id == postid
+        return true
+      else
+        return false
+      end
+    else
+      return false
+    end
 
+  end
   def index
     @posts = Post.search(params[:name], params[:search])
     #if params[:search]
