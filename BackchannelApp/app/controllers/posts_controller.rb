@@ -7,7 +7,12 @@ class PostsController < ApplicationController
   # GET /posts.json
 
   def index
+    @number_of_votes = Hash.new
     @posts = Post.search(params[:name], params[:search])
+    @posts.each do |p|
+    @number_of_votes[p] = Vote.where(:post_id => p.id).count
+    end
+
     #if params[:search]
       #@category_id = Category.where('name LIKE ?', '%#(params[:search])%').all
     #  @posts = Post.where('content LIKE ?', "%#{params[:search]}%").all

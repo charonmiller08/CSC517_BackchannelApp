@@ -31,7 +31,7 @@
         <td><%= Category.find(post.category_id).name %></td>
         <td><%= post.tag %></td>
         <td><%= User.find(post.user_id).username %></td>
-        <td><%= 3 %></td>
+        <td><%= @number_of_votes[post] %></td>
         <td><%= post.updated_at %></td>
         <td><%= link_to 'Vote', post if !is_my_post?(post.user_id) %></td>
         <td><%= link_to 'Show', post %></td>
