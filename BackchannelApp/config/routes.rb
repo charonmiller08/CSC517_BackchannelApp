@@ -75,6 +75,7 @@ BackchannelApp::Application.routes.draw do
   match "login_attempt", :to => "sessions#login_attempt"
   match "home", :to => "sessions#home"
   match "search", :to => "sessions#search"
+  match "vote", :to => "posts#vote"
 
   # See how all your routes lay out with "rake routes"
 

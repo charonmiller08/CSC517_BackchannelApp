@@ -1,11 +1,25 @@
 class PostsController < ApplicationController
   before_filter :make_user_login, :only => [:new, :create, :edit, :destroy, :update]
   before_filter :logged_in? #, :only => [:index, :new, :create,:edit, :destroy, :update]
-
+  after_filter :store_location
 
   # GET /posts
   # GET /posts.json
+  def vote
+    @vote = Vote.new()
+    @vote.post_id = params[:post_id]
+    @vote.user_id = params[:user_id]
 
+    respond_to do |format|
+      if @vote.save
+        format.html { redirect_back_or(home_url)}
+        format.json { render json: @vote, status: :created, location: @vote }
+      else
+        format.html { render action: "new" }
+        format.json { render json: @vote.errors, status: :unprocessable_entity }
+      end
+    end
+  end
   def index
     @number_of_votes = Hash.new
     @posts = Post.search(params[:name], params[:search])
@@ -63,7 +77,6 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = Post.new(params[:post])
-    # TODO retrieve authenticated user id and add to post
     @post.user_id = @current_user.id
     respond_to do |format|
       if @post.save

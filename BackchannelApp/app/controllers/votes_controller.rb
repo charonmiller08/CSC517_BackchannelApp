@@ -1,4 +1,7 @@
 class VotesController < ApplicationController
+  before_filter :make_user_login
+  before_filter :logged_in?
+  after_filter :store_location
   # GET /votes
   # GET /votes.json
   def index
@@ -24,6 +27,7 @@ class VotesController < ApplicationController
   # GET /votes/new_as
   # GET /votes/new_as.json
   def new
+    @post_id = params[:post_id]
     @vote = Vote.new
 
     respond_to do |format|
@@ -41,10 +45,12 @@ class VotesController < ApplicationController
   # POST /votes.json
   def create
     @vote = Vote.new(params[:vote])
+    @vote.post_id = params[:post_id]
+    @vote.user_id = params[:vote][:user_id]
 
     respond_to do |format|
       if @vote.save
-        format.html { redirect_to @vote, notice: 'Vote was successfully created.' }
+        format.html { redirect_back_or(home_url)}
         format.json { render json: @vote, status: :created, location: @vote }
       else
         format.html { render action: "new" }
