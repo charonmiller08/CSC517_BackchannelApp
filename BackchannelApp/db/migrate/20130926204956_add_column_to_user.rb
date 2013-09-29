@@ -1,6 +1,9 @@
 class AddColumnToUser < ActiveRecord::Migration
-  def change
+  def up
     add_column :users, :role, :string
-    remove_column :users, :user_role_id
+
+  end
+  def down
+    remove_column :users, :role
   end
 end

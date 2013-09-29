@@ -1,17 +1,8 @@
-<h1>Listing replies</h1>
-
-<table>
-  <tr>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
 <% @replies.each do |reply| %>
   <tr>
     <td><%= link_to 'Show', reply %></td>
-    <td><%= link_to 'Edit', edit_reply_path(reply) %></td>
-    <td><%= link_to 'Destroy', reply, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Edit', edit_reply_path(reply) if is_admin? || is_my_post?(reply.post_id)%></td>
+    <td><%= link_to 'Destroy', reply, method: :delete, data: { confirm: 'Are you sure?' } if is_admin? || is_my_post?(reply.post_id)%></td>
   </tr>
 <% end %>
 </table>

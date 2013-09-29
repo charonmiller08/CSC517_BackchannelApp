@@ -6,9 +6,22 @@ class ApplicationController < ActionController::Base
   helper_method :is_admin?
   helper_method :is_member?
   helper_method :logged_in?
+  helper_method :is_my_post?
 
   before_filter :is_current_page_home?
   protected
+  def is_my_post?(postid)
+    if @current_user
+      if @current_user.id == postid
+        return true
+      else
+        return false
+      end
+    else
+      return false
+    end
+
+  end
   def is_current_page_home?
     puts "url_home"
     puts request.url

@@ -1,0 +1,26 @@
+<% @replies.each do |reply| %>
+
+  <table border="1">
+  <tr>
+    <td style = "width: 100px"><%= reply.title %></td>
+    <td style = "width:150px"><%= User.find(reply.user_id).username %></td>
+    <td style = "width:200px"><%= reply.updated_at %></td>
+    <td style = "width:200px" ><%= link_to 'Vote', reply if !is_my_post?(reply.user_id) %>
+    <%= link_to 'Show', reply %>
+    <%= link_to 'Edit', edit_reply_path(reply)  if is_admin? || is_my_post?(reply.user_id)%>
+    <%= link_to 'Destroy', reply, method: :delete, data: { confirm: 'Are you sure?' }  if is_admin? || is_my_post?(reply.user_id)%></td>
+  </tr>
+ </table>
+ <table border = "1">
+   <tr>
+      <td style = "width:668px;height:100px ">
+        <%= reply.content %></td>
+   </tr>
+ </table>
+
+<br>
+<% end %>
+
+<br />
+
+<%= link_to 'New Reply', new_reply_path %>

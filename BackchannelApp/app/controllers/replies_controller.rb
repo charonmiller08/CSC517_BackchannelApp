@@ -1,20 +1,17 @@
 class RepliesController < ApplicationController
-  before_filter :authenticate_user, :only => [:new, :create, :edit, :destroy, :update]
+  before_filter :make_user_login, :only => [:new, :create, :edit, :destroy, :update]
+  after_filter :store_location
   # GET /replies
   # GET /replies.json
   def index
-    @replies = Reply.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @replies }
-    end
+    redirect_back_or(home_url)
   end
 
   # GET /replies/1
   # GET /replies/1.json
   def show
     @reply = Reply.find(params[:id])
+
 
     respond_to do |format|
       format.html # show.html.erb
@@ -42,10 +39,13 @@ class RepliesController < ApplicationController
   # POST /replies.json
   def create
     @reply = Reply.new(params[:reply])
+    #figure out how to get actual post id!
+    @reply.post_id = 2
+    @post = Post.where(:id => @reply.post_id).first
 
     respond_to do |format|
       if @reply.save
-        format.html { redirect_to @reply, notice: 'Reply was successfully created.' }
+        format.html { redirect_to @post, notice: 'Reply was successfully created.' }
         format.json { render json: @reply, status: :created, location: @reply }
       else
         format.html { render action: "new" }
