@@ -3,9 +3,6 @@ class UsersController < ApplicationController
   before_filter :make_user_login, :except  => [:signup, :create]
   after_filter :store_location
 
-
-
-
   # GET /users
   # GET /users.json
   def index
@@ -152,11 +149,7 @@ class UsersController < ApplicationController
     @posts = Post.where(:user_id => @user.id).all
     @anonymous = User.where(:username => 'Anonymous').first
     @posts.each do |p|
-    puts "user id before"
-    puts p.user_id
     p.update_attributes(:user_id => @anonymous.id)
-    puts "user id after"
-    puts p.user_id
     end
     @user.destroy
 
