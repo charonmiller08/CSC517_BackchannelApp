@@ -1,10 +1,11 @@
 class RepliesController < ApplicationController
   before_filter :make_user_login, :only => [:new, :create, :edit, :destroy, :update]
+  before_filter :logged_in?
   after_filter :store_location
   # GET /replies
   # GET /replies.json
   def index
-    redirect_back_or(home_url)
+    redirect_to posts_url
   end
 
   # GET /replies/1
@@ -22,7 +23,9 @@ class RepliesController < ApplicationController
   # GET /replies/new_as
   # GET /replies/new_as.json
   def new
+    @post_id = params[:post_id]
     @reply = Reply.new
+
 
     respond_to do |format|
       format.html # login.html.erb
@@ -39,8 +42,10 @@ class RepliesController < ApplicationController
   # POST /replies.json
   def create
     @reply = Reply.new(params[:reply])
-    #figure out how to get actual post id!
-    @reply.post_id = 2
+    #figure out how to get actual post id and user id
+    @reply.post_id = params[:reply][:post_id]
+    @reply.user_id = @current_user.id
+
     @post = Post.where(:id => @reply.post_id).first
 
     respond_to do |format|

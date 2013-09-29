@@ -20,9 +20,12 @@
   </tr>
 </table>
 <br>
+<%= link_to 'New Reply', {:controller => "replies", :action => "new", :post_id => @post.id} if logged_in? %>
+<%= link_to 'Back', posts_path %>
+<br>
+<br>
 <div> Replies </div>
 <br>
-<%= render '/replies/index', :post_id => @post.id %>
+<%= render '/replies/index' %>
 
-<%= link_to 'Edit', edit_post_path(@post) if is_admin? || is_my_post?(@post.user_id) %> |
-<%= link_to 'Back', posts_path %>
+
