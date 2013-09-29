@@ -149,8 +149,14 @@ class UsersController < ApplicationController
         return
       end
     end
-    if session[:user_id] == @user.id
-       session.destroy
+    @posts = Post.where(:user_id => @user.id).all
+    @anonymous = User.where(:username => 'Anonymous').first
+    @posts.each do |p|
+    puts "user id before"
+    puts p.user_id
+    p.update_attributes(:user_id => @anonymous.id)
+    puts "user id after"
+    puts p.user_id
     end
     @user.destroy
 

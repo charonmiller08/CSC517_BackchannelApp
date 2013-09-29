@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
   before_filter :save_login_state, :only => [:login, :login_attempt]
   after_filter :store_location
-  #before_filter :logged_in?
+  before_filter :logged_in?
 
   def login
     render "login"
@@ -26,5 +26,8 @@ class SessionsController < ApplicationController
     flash[:notice] = "You have been successfully logged out"
     flash[:color] = "valid"
     redirect_to home_url
+  end
+  def home
+
   end
 end

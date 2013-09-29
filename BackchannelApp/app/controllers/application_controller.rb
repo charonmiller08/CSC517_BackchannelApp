@@ -67,8 +67,12 @@ class ApplicationController < ActionController::Base
   def logged_in?
     if session[:user_id]
       # set current user object to @current_user object variable
+      begin
       @current_user = User.find session[:user_id]
-      #authenticate_user_role
+      rescue ActiveRecord::RecordNotFound
+        session[:user_id] = nil # or reset_session
+        return false
+      end
       return true
     else
       return false
