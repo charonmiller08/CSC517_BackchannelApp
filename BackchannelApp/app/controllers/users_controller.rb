@@ -130,11 +130,13 @@ class UsersController < ApplicationController
          redirect_to @user
          return
        end
-       if !((@user.role == "Administrator") && @superadmin_user)
+       if @user.role == "Administrator"
+         if !@superadmin_user
          if !(@current_user == @user)
            flash[:notice] = "Only the super administrator can delete other administrators"
            redirect_to @user
            return
+         end
          end
        end
     else
@@ -144,7 +146,9 @@ class UsersController < ApplicationController
         return
       end
     end
-    session.destroy
+    if session[:user_id] == @user.id
+       session.destroy
+    end
     @user.destroy
 
     respond_to do |format|
