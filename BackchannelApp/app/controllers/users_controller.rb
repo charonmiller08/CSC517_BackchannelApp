@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
   before_filter :save_login_state, :only => [:signup, :create]
   before_filter :make_user_login, :except  => [:signup, :create]
-  #before_filter :is_admin?, :only =>[:new]
   after_filter :store_location
 
 
@@ -14,10 +13,9 @@ class UsersController < ApplicationController
     if is_admin?
       @users = User.all
     elsif is_member?
-      #@users = [@current_user]
+      @users = [@current_user]
     else
-
-      #redirect_to "signup"
+      redirect_to "signup"
     end
     respond_to do |format|
       format.html # index.html.erb

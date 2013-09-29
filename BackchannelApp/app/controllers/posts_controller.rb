@@ -5,8 +5,6 @@ class PostsController < ApplicationController
   # GET /posts.json
 
   def index
-    puts "testing yet again"
-    puts params[:category]
     @posts = Post.search(params[:name], params[:search])
     #if params[:search]
       #@category_id = Category.where('name LIKE ?', '%#(params[:search])%').all
