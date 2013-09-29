@@ -1,5 +1,5 @@
 class Post < ActiveRecord::Base
-  attr_accessible :content, :title
+  attr_accessible :content, :title, :tag
   attr_accessible :category_id, :user_id
   belongs_to :category
   belongs_to :user
@@ -7,6 +7,8 @@ class Post < ActiveRecord::Base
 
   validates :title, :presence => true
   validates :content, :presence => true
+  validates :category_id, :presence => true
+  validates :tag, :presence => true
 
   def self.search(search_category, search)
     @posts = Post.all
