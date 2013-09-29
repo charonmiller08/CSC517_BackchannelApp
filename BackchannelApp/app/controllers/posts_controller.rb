@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_filter :make_user_login, :only => [:new, :create, :edit, :destroy, :update]
-  before_filter :logged_in?, :only => [:new, :create,:edit, :destroy, :update]
+  before_filter :logged_in?, :only => [:index, :new, :create,:edit, :destroy, :update]
   # GET /posts
   # GET /posts.json
 
