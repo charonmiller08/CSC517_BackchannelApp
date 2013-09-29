@@ -2,30 +2,36 @@
 <br>
 <div> Post <%= @post.title %> </div>
 <br>
-<table border="1">
+<table border = "1">
+  <th style ="width:100px"> Title </th>
+  <th style ="width:150px"> Username </th>
+  <th style ="width:100px"> Tag</th>
+  <th style ="width:200px"> Last updated</th>
+  <th style ="width:200px"> Options</th>
+</table>
+<table border="1" bgcolor = "99CCCC">
+
   <tr>
     <td style = "width: 100px"><%= @post.title %></td>
     <td style = "width:150px"><%= User.find(@post.user_id).username %></td>
+    <td style = "width:100px"><%= @post.tag %></td>
     <td style = "width:200px"><%= @post.updated_at %></td>
     <td style = "width:200px" ><%= link_to 'Vote', @post if !is_my_post?(@post.user_id) %>
-      <%= link_to 'Show', @post %>
       <%= link_to 'Edit', edit_post_path(@post)  if is_admin? || is_my_post?(@post.user_id)%>
       <%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' }  if is_admin? || is_my_post?(@post.user_id)%></td>
   </tr>
 </table>
 <table border = "1">
   <tr>
-    <td style = "width:668px;height:100px ">
+    <td style = "width:768px;height:100px ">
       <%= @post.content %></td>
   </tr>
 </table>
+<%= render '/replies/index' %>
+
+<br>
 <br>
 <%= link_to 'New Reply', {:controller => "replies", :action => "new", :post_id => @post.id} if logged_in? %>
 <%= link_to 'Back', posts_path %>
-<br>
-<br>
-<div> Replies </div>
-<br>
-<%= render '/replies/index' %>
 
 
