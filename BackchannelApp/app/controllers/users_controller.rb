@@ -27,6 +27,9 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
+    @post_count = Post.where(:user_id => @user.id).count
+    @vote_count = Vote.where(:user_id => @user.id).count
+
     if !is_admin?
       if !(@user == @current_user)
         redirect_to @current_user
