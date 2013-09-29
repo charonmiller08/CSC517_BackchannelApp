@@ -1,17 +1,24 @@
 class PostsController < ApplicationController
   before_filter :make_user_login, :only => [:new, :create, :edit, :destroy, :update]
+  before_filter :logged_in?, :only => [:new, :create,:edit, :destroy, :update]
   # GET /posts
   # GET /posts.json
-  def index
-    @posts = Post.all
 
-    search_class = params[:search_class]
-    search_string = params[:search_string]
-    if(search_string != nil)
-      if(search_class == Tag || search_class == Content)
-        @posts = Post.where('content LIKE ?', '%'+search_string+'%').all
-      end
-    end
+  def index
+    puts "testing yet again"
+    puts params[:category]
+    @posts = Post.search(params[:name], params[:search])
+    #if params[:search]
+      #@category_id = Category.where('name LIKE ?', '%#(params[:search])%').all
+    #  @posts = Post.where('content LIKE ?', "%#{params[:search]}%").all
+    #end
+   # search_class = params[:search_class]
+   # search_string = params[:search_string]
+    #if(search_string != nil)
+    #  if(search_class == Tag || search_class == Content)
+    #    @posts = Post.where('content LIKE ?', '%'+search_string+'%').all
+    #  end
+   # end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -51,7 +58,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(params[:post])
     # TODO retrieve authenticated user id and add to post
-    @post.user_id = 1
+    @post.user_id = @current_user.id
     respond_to do |format|
       if @post.save
         format.html { redirect_to @post, notice: 'Post was successfully created.' }

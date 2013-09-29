@@ -1,5 +1,8 @@
 <h1> Home Page </h1>
 <p id="notice"><%= flash[:notice] %></p>
 
-<tr><%= link_to "Users", users_url if is_admin? %></tr>
-<tr><%= link_to "Categories", categories_url if is_admin? %></tr>
+<tr><%= link_to "Edit Users", users_url if is_admin? %></tr>
+<tr><%= link_to "Edit Categories", categories_url if is_admin? %></tr>
+
+
+

@@ -8,13 +8,14 @@
 </head>
 <body>
 <h1> Online Backchannel App </h1>
-<h2> Welcome <%= @current_user.username if @current_user %></h2>
+<h2> Welcome <%= @current_user.username if @current_user %>
+
 <%= yield %>
-<br>
 
 <br>
 
-    <%= link_to "Search", search_url  %>
+<br>
+
     <%= link_to "Make a new Post", new_post_url if @current_user%>
 </body>
 <p>
