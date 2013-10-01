@@ -16,7 +16,7 @@
     <td style = "width:150px"><%= User.find(@post.user_id).username %></td>
     <td style = "width:100px"><%= @post.tag %></td>
     <td style = "width:200px"><%= @post.updated_at %></td>
-    <td style = "width:200px" ><%= link_to 'Vote', @post if !is_my_post?(@post.user_id) %>
+    <td style = "width:200px" ><%= link_to 'Vote', {:controller => "votes", :action => "new", :post_id => @post.id} if logged_in? && !is_my_post?(@post.user_id) %>
       <%= link_to 'Edit', edit_post_path(@post)  if is_admin? || is_my_post?(@post.user_id)%>
       <%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' }  if is_admin? || is_my_post?(@post.user_id)%></td>
   </tr>

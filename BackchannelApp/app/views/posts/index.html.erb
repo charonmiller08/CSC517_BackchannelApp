@@ -1,7 +1,7 @@
 <h1>Listing Posts</h1>
+<p id="notice"><%= flash[:notice] %></p>
 
 <%= form_tag posts_url, :method => 'get' do%>
-
 <p>
   <%= text_field_tag :search, params[:search]%>
  <%=select(params[:name], :name, ["category", "title", "username", "tag"])%>
@@ -33,7 +33,7 @@
         <td><%= User.find(post.user_id).username %></td>
         <td><%= @number_of_votes[post] %></td>
         <td><%= post.updated_at %></td>
-        <td><%= link_to 'Vote', {:controller => "posts", :action => "vote", :post_id => post.id, :user_id => @current_user.id} if logged_in? && !is_my_post?(post.user_id) %></td>
+        <td><%= link_to 'Vote', {:controller => "votes", :action => "new", :post_id => post.id} if logged_in? && !is_my_post?(post.user_id) %></td>
         <td><%= link_to 'Show', post %></td>
         <td><%= link_to 'Edit', edit_post_path(post) if is_admin? || is_my_post?(post.user_id)%></td>
         <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } if is_admin? || (@current_user && (post.user_id == @current_user.id))%></td>

@@ -29,11 +29,12 @@ class VotesController < ApplicationController
   def new
     @post_id = params[:post_id]
     @vote = Vote.new
-
-    respond_to do |format|
-      format.html # login.html.erb
-      format.json { render json: @vote }
-    end
+    puts "IS THISSS WORKING?"
+    create
+    #respond_to do |format|
+    #  format.html # login.html.erb
+    #  format.json { render json: @vote }
+    #end
   end
 
   # GET /votes/1/edit
@@ -44,16 +45,24 @@ class VotesController < ApplicationController
   # POST /votes
   # POST /votes.json
   def create
-    @vote = Vote.new(params[:vote])
-    @vote.post_id = params[:post_id]
-    @vote.user_id = params[:vote][:user_id]
+    puts "IS THIS WORKING NOWWWW?"
+
+    @previous_votes = Vote.where(:post_id => params[:post_id],:user_id => @current_user.id).all
+    if @previous_votes.blank?
+      @vote = Vote.new(params[:vote])
+      @vote.post_id = params[:post_id]
+      @vote.user_id = @current_user.id
+    else
+      @vote = nil
+    end
 
     respond_to do |format|
-      if @vote.save
-        format.html { redirect_back_or(home_url)}
+      if @vote
+        @vote.save
+        format.html { redirect_back_or(posts_url, "Thank you for voting!", "valid")}
         format.json { render json: @vote, status: :created, location: @vote }
       else
-        format.html { render action: "new" }
+        format.html {redirect_back_or(posts_url, "You can't vote for a post more than once!", "invalid")}
         format.json { render json: @vote.errors, status: :unprocessable_entity }
       end
     end

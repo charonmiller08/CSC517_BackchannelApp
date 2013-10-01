@@ -63,11 +63,7 @@ class PostsController < ApplicationController
 
     array_of_primary_key = []
     @post_replies = Reply.where(:parent_post_id => @post.id).all
-    puts "WHAT DOES THIS LOOK LIKE NOW?"
-    puts @post_replies
 
-    #if !@post_replies.blank?
-      puts "hello"
       @replies = []
       @post_replies.each do |p|
         puts "post idddd"
