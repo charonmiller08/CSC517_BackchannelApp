@@ -6,9 +6,20 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def vote
-    @vote = Vote.new()
-    @vote.post_id = params[:post_id]
-    @vote.user_id = params[:user_id]
+    puts "trying votes againsss"
+    @votes_existing = Vote.find_all_by_post_id_and_user_id(params[:post_id],params[:user_id])
+
+
+    if !@votes_existing
+      @vote = Vote.new()
+      @vote.post_id = params[:post_id]
+      @vote.user_id = params[:user_id]
+    else
+      redirect_back_or(home_url)
+
+      return
+    end
+
 
     respond_to do |format|
       if @vote.save
@@ -49,7 +60,15 @@ class PostsController < ApplicationController
   # GET /posts/1.json
   def show
     @post = Post.find(params[:id])
-    @replies = Reply.where(:post_id => @post.id).all
+    array_of_primary_key = []
+    @post_replies = Reply.where(:parent_post_id => @post.id).all
+    puts "WHAT DOES THIS LOOK LIKE?"
+    puts @post_replies
+
+    @replies = []
+    @post_replies.each do |p|
+      @replies << Post.find_by_id(p.post_id)
+    end
 
     respond_to do |format|
       format.html # show.html.erb
@@ -60,6 +79,7 @@ class PostsController < ApplicationController
   # GET /posts/new_as
   # GET /posts/new_as.json
   def new
+    @parent_post_id = params[:parent_post_id]
     @post = Post.new
 
     respond_to do |format|
@@ -78,9 +98,19 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(params[:post])
     @post.user_id = @current_user.id
+    @created = @post
+    if params[:parent_post_id]
+      @reply = Reply.new()
+      @reply.parent_post_id = params[:parent_post_id]
+      @reply.post_id = @post.id
+      @created = @reply
+      @post = Post.where(:id => @reply.parent_post_id).first
+
+    end
+
     respond_to do |format|
-      if @post.save
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
+      if @created.save
+        format.html { redirect_to @post, notice: 'Thank you for posting!' }
         format.json { render json: @post, status: :created, location: @post }
       else
         format.html { render action: "new" }
