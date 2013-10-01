@@ -6,7 +6,7 @@
     <ignored path=".idea/workspace.xml" />
     <file path="/Dummy.txt" changelist="053587d9-969c-4cc1-af31-ff16ec15a821" time="1380582419517" ignored="false" />
     <file path="/category.rb" changelist="053587d9-969c-4cc1-af31-ff16ec15a821" time="1380079168321" ignored="false" />
-    <file path="/post.rb" changelist="053587d9-969c-4cc1-af31-ff16ec15a821" time="1380482593698" ignored="false" />
+    <file path="/post.rb" changelist="053587d9-969c-4cc1-af31-ff16ec15a821" time="1380645771593" ignored="false" />
     <file path="/reply.rb" changelist="053587d9-969c-4cc1-af31-ff16ec15a821" time="1380585239863" ignored="false" />
     <file path="/tag.rb" changelist="053587d9-969c-4cc1-af31-ff16ec15a821" time="1380079580320" ignored="false" />
     <file path="/user.rb" changelist="053587d9-969c-4cc1-af31-ff16ec15a821" time="1380389315752" ignored="false" />
@@ -19,7 +19,7 @@
     <file path="/application.html.erb" changelist="053587d9-969c-4cc1-af31-ff16ec15a821" time="1380638490887" ignored="false" />
     <file path="/_form.html.erb" changelist="053587d9-969c-4cc1-af31-ff16ec15a821" time="1380588354601" ignored="false" />
     <file path="/show.html.erb" changelist="053587d9-969c-4cc1-af31-ff16ec15a821" time="1380606211732" ignored="false" />
-    <file path="/index.html.erb" changelist="053587d9-969c-4cc1-af31-ff16ec15a821" time="1380602264339" ignored="false" />
+    <file path="/index.html.erb" changelist="053587d9-969c-4cc1-af31-ff16ec15a821" time="1380639054578" ignored="false" />
     <file path="/user_role.rb" changelist="053587d9-969c-4cc1-af31-ff16ec15a821" time="1380112752678" ignored="false" />
     <file path="/20130925124324_add_reference_to_user_roles.rb" changelist="053587d9-969c-4cc1-af31-ff16ec15a821" time="1380113024837" ignored="false" />
     <file path="/20130925030529_create_users.rb" changelist="053587d9-969c-4cc1-af31-ff16ec15a821" time="1380113057952" ignored="false" />
@@ -27,7 +27,7 @@
     <file path="/20130925203520_drop_user_table.rb" changelist="053587d9-969c-4cc1-af31-ff16ec15a821" time="1380141349813" ignored="false" />
     <file path="/20130925204500_20130925044400_create_user_roles.rb" changelist="053587d9-969c-4cc1-af31-ff16ec15a821" time="1380141947854" ignored="false" />
     <file path="/sessions_controller.rb" changelist="053587d9-969c-4cc1-af31-ff16ec15a821" time="1380638081068" ignored="false" />
-    <file path="/home.html.erb" changelist="053587d9-969c-4cc1-af31-ff16ec15a821" time="1380638449021" ignored="false" />
+    <file path="/home.html.erb" changelist="053587d9-969c-4cc1-af31-ff16ec15a821" time="1380639065282" ignored="false" />
     <file path="/staticpages_controller.rb" changelist="053587d9-969c-4cc1-af31-ff16ec15a821" time="1380146370344" ignored="false" />
     <file path="/new.html.erb" changelist="053587d9-969c-4cc1-af31-ff16ec15a821" time="1380584699166" ignored="false" />
     <file path="/authentication_pages_test.rb" changelist="053587d9-969c-4cc1-af31-ff16ec15a821" time="1380148425232" ignored="false" />
@@ -38,7 +38,7 @@
     <file path="/login.html.erb" changelist="053587d9-969c-4cc1-af31-ff16ec15a821" time="1380312944686" ignored="false" />
     <file path="/profile.html.erb" changelist="053587d9-969c-4cc1-af31-ff16ec15a821" time="1380309485170" ignored="false" />
     <file path="/static_pages_controller.rb" changelist="053587d9-969c-4cc1-af31-ff16ec15a821" time="1380421543208" ignored="false" />
-    <file path="/posts_controller.rb" changelist="053587d9-969c-4cc1-af31-ff16ec15a821" time="1380607291456" ignored="false" />
+    <file path="/posts_controller.rb" changelist="053587d9-969c-4cc1-af31-ff16ec15a821" time="1380644929558" ignored="false" />
     <file path="/categories_controller.rb" changelist="053587d9-969c-4cc1-af31-ff16ec15a821" time="1380409474668" ignored="false" />
     <file path="/search.html.erb" changelist="053587d9-969c-4cc1-af31-ff16ec15a821" time="1380424954576" ignored="false" />
     <file path="/sessions_helper.rb" changelist="053587d9-969c-4cc1-af31-ff16ec15a821" time="1380604092919" ignored="false" />
@@ -77,11 +77,18 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="application.html.erb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="application.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="58" selection-start="458" selection-end="458" vertical-scroll-proportion="0.43309858">
-              <folding />
+            <state line="25" column="12" selection-start="697" selection-end="697" vertical-scroll-proportion="-8.0">
+              <folding>
+                <marker date="1380638492292" expanded="true" signature="21:695" placeholder="..." />
+                <marker date="1380638492292" expanded="true" signature="28:201" placeholder="..." />
+                <marker date="1380638492292" expanded="true" signature="208:457" placeholder="..." />
+                <marker date="1380638492292" expanded="true" signature="247:450" placeholder="..." />
+                <marker date="1380638492292" expanded="true" signature="461:687" placeholder="..." />
+                <marker date="1380638492292" expanded="true" signature="468:683" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -89,7 +96,25 @@
       <file leaf-file-name="home.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/sessions/home.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="27" selection-start="128" selection-end="128" vertical-scroll-proportion="1.1923077">
+            <state line="10" column="47" selection-start="304" selection-end="304" vertical-scroll-proportion="-2.0769231">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="post.rb" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/models/post.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="26" column="10" selection-start="1017" selection-end="1017" vertical-scroll-proportion="-0.040697675">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="posts_controller.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/posts_controller.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="4" column="39" selection-start="251" selection-end="251" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -104,20 +129,32 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="new.html.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/votes/new.html.erb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="show.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/posts/show.html.erb">
           <provider selected="true" editor-type-id="text-editor">
             <state line="13" column="31" selection-start="389" selection-end="389" vertical-scroll-proportion="-5.230769">
-              <folding />
+              <folding>
+                <marker date="1380606762937" expanded="true" signature="99:349" placeholder="..." />
+                <marker date="1380606762937" expanded="false" signature="115:126" placeholder="..." />
+                <marker date="1380606762937" expanded="false" signature="155:166" placeholder="..." />
+                <marker date="1380606762937" expanded="false" signature="198:209" placeholder="..." />
+                <marker date="1380606762937" expanded="false" signature="235:246" placeholder="..." />
+                <marker date="1380606762937" expanded="false" signature="282:293" placeholder="..." />
+                <marker date="1380606762937" expanded="false" signature="315:326" placeholder="..." />
+                <marker date="1380606762937" expanded="true" signature="387:1117" placeholder="..." />
+                <marker date="1380606762937" expanded="true" signature="395:1108" placeholder="..." />
+                <marker date="1380606762937" expanded="false" signature="414:426" placeholder="..." />
+                <marker date="1380606762937" expanded="false" signature="469:480" placeholder="..." />
+                <marker date="1380606762937" expanded="false" signature="545:556" placeholder="..." />
+                <marker date="1380606762937" expanded="false" signature="597:608" placeholder="..." />
+                <marker date="1380606762937" expanded="false" signature="656:667" placeholder="..." />
+                <marker date="1380606762937" expanded="false" signature="722:733" placeholder="..." />
+                <marker date="1380606762937" expanded="true" signature="734:1100" placeholder="..." />
+                <marker date="1380606762937" expanded="true" signature="1138:1239" placeholder="..." />
+                <marker date="1380606762937" expanded="true" signature="1145:1230" placeholder="..." />
+                <marker date="1380606762937" expanded="false" signature="1164:1189" placeholder="..." />
+                <marker date="1380606762937" expanded="true" signature="1190:1222" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -125,7 +162,7 @@
       <file leaf-file-name="index.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/posts/index.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="9" selection-start="65" selection-end="297" vertical-scroll-proportion="-5.8846154">
+            <state line="6" column="42" selection-start="205" selection-end="205" vertical-scroll-proportion="12.423077">
               <folding />
             </state>
           </provider>
@@ -153,16 +190,10 @@
         <entry file="file://$PROJECT_DIR$/app/views/users/signup.html.erb">
           <provider selected="true" editor-type-id="text-editor">
             <state line="22" column="45" selection-start="699" selection-end="699" vertical-scroll-proportion="-7.8461537">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="routes.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config/routes.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="62" column="33" selection-start="1354" selection-end="1354" vertical-scroll-proportion="0.0">
-              <folding />
+              <folding>
+                <marker date="1380608520065" expanded="true" signature="86:662" placeholder="..." />
+                <marker date="1380608520065" expanded="true" signature="507:643" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -189,22 +220,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/views/replies/new.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/replies_controller.rb" />
         <option value="$PROJECT_DIR$/db/migrate/20130930230716_remove_column_from_users.rb" />
-        <option value="$PROJECT_DIR$/app/views/posts/index.html.erb" />
         <option value="$PROJECT_DIR$/app/helpers/sessions_helper.rb" />
         <option value="$PROJECT_DIR$/app/controllers/votes_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/posts/show.html.erb" />
-        <option value="$PROJECT_DIR$/app/controllers/posts_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/replies/_index.html.erb" />
         <option value="$PROJECT_DIR$/app/views/sessions/_login.html.erb" />
         <option value="$PROJECT_DIR$/app/views/users/_signup.html.erb" />
         <option value="$PROJECT_DIR$/config/routes.rb" />
         <option value="$PROJECT_DIR$/app/controllers/users_controller.rb" />
         <option value="$PROJECT_DIR$/app/controllers/sessions_controller.rb" />
-        <option value="$PROJECT_DIR$/app/views/sessions/home.html.erb" />
         <option value="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/posts/index.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/sessions/home.html.erb" />
+        <option value="$PROJECT_DIR$/app/controllers/posts_controller.rb" />
+        <option value="$PROJECT_DIR$/app/models/post.rb" />
       </list>
     </option>
   </component>
@@ -216,7 +247,7 @@
     <option name="CUSTOM_FILTER" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="width" value="798" />
+    <option name="width" value="1071" />
     <option name="height" value="728" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -414,6 +445,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="layouts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BackchannelApp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BackchannelApp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="models" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -883,14 +932,14 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="798" height="728" extended-state="0" />
+    <frame x="0" y="0" width="1071" height="728" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32901135" sideWeight="0.49925038" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32940108" sideWeight="0.6283784" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19181585" sideWeight="0.6337115" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1421801" sideWeight="0.6337115" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32901135" sideWeight="0.50074965" order="9" side_tool="true" content_ui="tabs" />
@@ -968,18 +1017,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/controllers/votes_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="20" selection-start="641" selection-end="641" vertical-scroll-proportion="-6.68" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/posts_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="100" selection-start="1537" selection-end="1537" vertical-scroll-proportion="-8.52">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/replies/_index.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="1" column="0" selection-start="1" selection-end="1" vertical-scroll-proportion="-0.65384614" />
@@ -1040,21 +1077,52 @@
     <entry file="file://$PROJECT_DIR$/app/views/users/signup.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="22" column="45" selection-start="699" selection-end="699" vertical-scroll-proportion="-7.8461537">
-          <folding />
+          <folding>
+            <marker date="1380608520065" expanded="true" signature="86:662" placeholder="..." />
+            <marker date="1380608520065" expanded="true" signature="507:643" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/posts/show.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="31" selection-start="389" selection-end="389" vertical-scroll-proportion="-5.230769">
-          <folding />
+          <folding>
+            <marker date="1380606762937" expanded="true" signature="99:349" placeholder="..." />
+            <marker date="1380606762937" expanded="false" signature="115:126" placeholder="..." />
+            <marker date="1380606762937" expanded="false" signature="155:166" placeholder="..." />
+            <marker date="1380606762937" expanded="false" signature="198:209" placeholder="..." />
+            <marker date="1380606762937" expanded="false" signature="235:246" placeholder="..." />
+            <marker date="1380606762937" expanded="false" signature="282:293" placeholder="..." />
+            <marker date="1380606762937" expanded="false" signature="315:326" placeholder="..." />
+            <marker date="1380606762937" expanded="true" signature="387:1117" placeholder="..." />
+            <marker date="1380606762937" expanded="true" signature="395:1108" placeholder="..." />
+            <marker date="1380606762937" expanded="false" signature="414:426" placeholder="..." />
+            <marker date="1380606762937" expanded="false" signature="469:480" placeholder="..." />
+            <marker date="1380606762937" expanded="false" signature="545:556" placeholder="..." />
+            <marker date="1380606762937" expanded="false" signature="597:608" placeholder="..." />
+            <marker date="1380606762937" expanded="false" signature="656:667" placeholder="..." />
+            <marker date="1380606762937" expanded="false" signature="722:733" placeholder="..." />
+            <marker date="1380606762937" expanded="true" signature="734:1100" placeholder="..." />
+            <marker date="1380606762937" expanded="true" signature="1138:1239" placeholder="..." />
+            <marker date="1380606762937" expanded="true" signature="1145:1230" placeholder="..." />
+            <marker date="1380606762937" expanded="false" signature="1164:1189" placeholder="..." />
+            <marker date="1380606762937" expanded="true" signature="1190:1222" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/posts/index.html.erb">
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="9" selection-start="65" selection-end="297" vertical-scroll-proportion="-5.8846154">
-          <folding />
+        <state line="25" column="12" selection-start="697" selection-end="697" vertical-scroll-proportion="-8.0">
+          <folding>
+            <marker date="1380638492292" expanded="true" signature="21:695" placeholder="..." />
+            <marker date="1380638492292" expanded="true" signature="28:201" placeholder="..." />
+            <marker date="1380638492292" expanded="true" signature="208:457" placeholder="..." />
+            <marker date="1380638492292" expanded="true" signature="247:450" placeholder="..." />
+            <marker date="1380638492292" expanded="true" signature="461:687" placeholder="..." />
+            <marker date="1380638492292" expanded="true" signature="468:683" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1067,14 +1135,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/sessions/home.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="27" selection-start="128" selection-end="128" vertical-scroll-proportion="1.1923077">
+        <state line="10" column="47" selection-start="304" selection-end="304" vertical-scroll-proportion="-2.0769231">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
+    <entry file="file://$PROJECT_DIR$/app/views/posts/index.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="58" selection-start="458" selection-end="458" vertical-scroll-proportion="0.43309858">
+        <state line="6" column="42" selection-start="205" selection-end="205" vertical-scroll-proportion="12.423077">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/posts_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="39" selection-start="251" selection-end="251" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/post.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="10" selection-start="1017" selection-end="1017" vertical-scroll-proportion="-0.040697675">
           <folding />
         </state>
       </provider>

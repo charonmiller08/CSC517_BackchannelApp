@@ -4,7 +4,7 @@
 <%= form_tag posts_url, :method => 'get' do%>
 <p>
   <%= text_field_tag :search, params[:search]%>
- <%=select(params[:name], :name, ["category", "title", "username", "tag"])%>
+ <%=select(params[:name], :name, ["all", "category", "title", "username", "tag"])%>
   <%= submit_tag "Search", :name => nil %>
 </p>
 <% end %>

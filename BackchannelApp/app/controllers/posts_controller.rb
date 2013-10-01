@@ -9,7 +9,7 @@ class PostsController < ApplicationController
     @number_of_votes = Hash.new
     @posts = Post.search(params[:name], params[:search])
     @posts.each do |p|
-    @number_of_votes[p] = Vote.where(:post_id => p.id).count
+      @number_of_votes[p] = Vote.where(:post_id => p.id).count
     end
 
     #if params[:search]
