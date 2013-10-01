@@ -209,3 +209,61 @@ REQUESTING PAGE: GET http://www.example.com/login with {} and HTTP headers {}
 REQUESTING PAGE: GET http://www.example.com/home with {} and HTTP headers {"HTTP_REFERER"=>"http://www.example.com/login"}
 REQUESTING PAGE: GET http://www.example.com/signup with {} and HTTP headers {"HTTP_REFERER"=>"http://www.example.com/home"}
 REQUESTING PAGE: GET http://www.example.com/signup with {} and HTTP headers {}
+REQUESTING PAGE: GET http://www.example.com/login with {} and HTTP headers {}
+REQUESTING PAGE: GET http://www.example.com/home with {} and HTTP headers {"HTTP_REFERER"=>"http://www.example.com/login"}
+REQUESTING PAGE: GET http://www.example.com/signup with {} and HTTP headers {"HTTP_REFERER"=>"http://www.example.com/home"}
+REQUESTING PAGE: GET http://www.example.com/signup with {} and HTTP headers {}
+REQUESTING PAGE: GET http://www.example.com/home with {} and HTTP headers {}
+REQUESTING PAGE: GET http://www.example.com/posts with {} and HTTP headers {"HTTP_REFERER"=>"http://www.example.com/home"}
+REQUESTING PAGE: GET http://www.example.com/posts with {"utf8"=>"✓", "search"=>"Homework", "name"=>"category"} and HTTP headers {"HTTP_REFERER"=>"http://www.example.com/posts"}
+REQUESTING PAGE: GET http://www.example.com/login with {} and HTTP headers {}
+REQUESTING PAGE: GET http://www.example.com/home with {} and HTTP headers {"HTTP_REFERER"=>"http://www.example.com/login"}
+REQUESTING PAGE: POST /login_attempt with {"utf8"=>"✓", "username_or_email"=>"user1", "login_password"=>"password", "commit"=>"Log In"} and HTTP headers {"HTTP_REFERER"=>"http://www.example.com/home"}
+REQUESTING PAGE: GET http://www.example.com/posts/new with {} and HTTP headers {"HTTP_REFERER"=>"/login_attempt"}
+REQUESTING PAGE: GET http://www.example.com/login with {} and HTTP headers {"HTTP_REFERER"=>"http://www.example.com/posts/new"}
+REQUESTING PAGE: GET http://www.example.com/home with {} and HTTP headers {"HTTP_REFERER"=>"http://www.example.com/login"}
+REQUESTING PAGE: GET http://www.example.com/login with {} and HTTP headers {}
+REQUESTING PAGE: GET http://www.example.com/home with {} and HTTP headers {"HTTP_REFERER"=>"http://www.example.com/login"}
+REQUESTING PAGE: POST /login_attempt with {"utf8"=>"✓", "username_or_email"=>"user1", "login_password"=>"password", "commit"=>"Log In"} and HTTP headers {"HTTP_REFERER"=>"http://www.example.com/home"}
+REQUESTING PAGE: GET http://www.example.com/login with {} and HTTP headers {}
+REQUESTING PAGE: GET http://www.example.com/home with {} and HTTP headers {"HTTP_REFERER"=>"http://www.example.com/login"}
+REQUESTING PAGE: POST /login_attempt with {"utf8"=>"✓", "username_or_email"=>"user1", "login_password"=>"password", "commit"=>"Log In"} and HTTP headers {"HTTP_REFERER"=>"http://www.example.com/home"}
+REQUESTING PAGE: GET http://www.example.com/posts/new with {} and HTTP headers {"HTTP_REFERER"=>"/login_attempt"}
+REQUESTING PAGE: GET http://www.example.com/login with {} and HTTP headers {"HTTP_REFERER"=>"http://www.example.com/posts/new"}
+REQUESTING PAGE: GET http://www.example.com/home with {} and HTTP headers {"HTTP_REFERER"=>"http://www.example.com/login"}
+REQUESTING PAGE: GET http://www.example.com/login with {} and HTTP headers {}
+REQUESTING PAGE: GET http://www.example.com/home with {} and HTTP headers {"HTTP_REFERER"=>"http://www.example.com/login"}
+REQUESTING PAGE: POST /login_attempt with {"utf8"=>"✓", "username_or_email"=>"user1", "login_password"=>"password", "commit"=>"Log In"} and HTTP headers {"HTTP_REFERER"=>"http://www.example.com/home"}
+REQUESTING PAGE: GET http://www.example.com/posts/new with {} and HTTP headers {"HTTP_REFERER"=>"/login_attempt"}
+REQUESTING PAGE: GET http://www.example.com/login with {} and HTTP headers {"HTTP_REFERER"=>"http://www.example.com/posts/new"}
+REQUESTING PAGE: GET http://www.example.com/home with {} and HTTP headers {"HTTP_REFERER"=>"http://www.example.com/login"}
+REQUESTING PAGE: GET http://www.example.com/login with {} and HTTP headers {}
+REQUESTING PAGE: GET http://www.example.com/home with {} and HTTP headers {"HTTP_REFERER"=>"http://www.example.com/login"}
+REQUESTING PAGE: POST /login_attempt with {"utf8"=>"✓", "username_or_email"=>"user1", "login_password"=>"password", "commit"=>"Log In"} and HTTP headers {"HTTP_REFERER"=>"http://www.example.com/home"}
+REQUESTING PAGE: GET http://www.example.com/posts/new with {} and HTTP headers {"HTTP_REFERER"=>"/login_attempt"}
+REQUESTING PAGE: GET http://www.example.com/login with {} and HTTP headers {"HTTP_REFERER"=>"http://www.example.com/posts/new"}
+REQUESTING PAGE: GET http://www.example.com/home with {} and HTTP headers {"HTTP_REFERER"=>"http://www.example.com/login"}
+REQUESTING PAGE: GET http://www.example.com/login with {} and HTTP headers {}
+REQUESTING PAGE: GET http://www.example.com/home with {} and HTTP headers {"HTTP_REFERER"=>"http://www.example.com/login"}
+REQUESTING PAGE: POST /login_attempt with {"utf8"=>"✓", "username_or_email"=>"user1", "login_password"=>"password", "commit"=>"Log In"} and HTTP headers {"HTTP_REFERER"=>"http://www.example.com/home"}
+REQUESTING PAGE: GET http://www.example.com/posts/new with {} and HTTP headers {"HTTP_REFERER"=>"/login_attempt"}
+REQUESTING PAGE: GET http://www.example.com/login with {} and HTTP headers {"HTTP_REFERER"=>"http://www.example.com/posts/new"}
+REQUESTING PAGE: GET http://www.example.com/home with {} and HTTP headers {"HTTP_REFERER"=>"http://www.example.com/login"}
+REQUESTING PAGE: GET http://www.example.com/login with {} and HTTP headers {}
+REQUESTING PAGE: GET http://www.example.com/home with {} and HTTP headers {"HTTP_REFERER"=>"http://www.example.com/login"}
+REQUESTING PAGE: POST /login_attempt with {"utf8"=>"✓", "username_or_email"=>"user1", "login_password"=>"password", "commit"=>"Log In"} and HTTP headers {"HTTP_REFERER"=>"http://www.example.com/home"}
+REQUESTING PAGE: GET http://www.example.com/posts/new with {} and HTTP headers {"HTTP_REFERER"=>"/login_attempt"}
+REQUESTING PAGE: GET http://www.example.com/login with {} and HTTP headers {"HTTP_REFERER"=>"http://www.example.com/posts/new"}
+REQUESTING PAGE: GET http://www.example.com/home with {} and HTTP headers {"HTTP_REFERER"=>"http://www.example.com/login"}
+REQUESTING PAGE: GET http://www.example.com/login with {} and HTTP headers {}
+REQUESTING PAGE: GET http://www.example.com/home with {} and HTTP headers {"HTTP_REFERER"=>"http://www.example.com/login"}
+REQUESTING PAGE: POST /login_attempt with {"utf8"=>"✓", "username_or_email"=>"user1", "login_password"=>"password", "commit"=>"Log In"} and HTTP headers {"HTTP_REFERER"=>"http://www.example.com/home"}
+REQUESTING PAGE: GET http://www.example.com/posts/new with {} and HTTP headers {"HTTP_REFERER"=>"/login_attempt"}
+REQUESTING PAGE: GET http://www.example.com/login with {} and HTTP headers {"HTTP_REFERER"=>"http://www.example.com/posts/new"}
+REQUESTING PAGE: GET http://www.example.com/home with {} and HTTP headers {"HTTP_REFERER"=>"http://www.example.com/login"}
+REQUESTING PAGE: GET http://www.example.com/login with {} and HTTP headers {}
+REQUESTING PAGE: GET http://www.example.com/home with {} and HTTP headers {"HTTP_REFERER"=>"http://www.example.com/login"}
+REQUESTING PAGE: POST /login_attempt with {"utf8"=>"✓", "username_or_email"=>"user1", "login_password"=>"password", "commit"=>"Log In"} and HTTP headers {"HTTP_REFERER"=>"http://www.example.com/home"}
+REQUESTING PAGE: GET http://www.example.com/posts/new with {} and HTTP headers {"HTTP_REFERER"=>"/login_attempt"}
+REQUESTING PAGE: GET http://www.example.com/login with {} and HTTP headers {"HTTP_REFERER"=>"http://www.example.com/posts/new"}
+REQUESTING PAGE: GET http://www.example.com/home with {} and HTTP headers {"HTTP_REFERER"=>"http://www.example.com/login"}
