@@ -17,6 +17,8 @@ class CategoriesControllerTest < ActionController::TestCase
   end
 
   test "should create category" do
+    @current_user = User.new
+    @current_user.role = "Administrator"
     assert_difference('Category.count') do
       post :create, category: { name: @category.name }
     end

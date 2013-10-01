@@ -5,3 +5,9 @@ one:
 
 two:
   name: MyString
+
+<% 1000.times do |n| %>
+category_<%= n %>:
+  name: <%= "category#{n}" %>
+
+<% end %>

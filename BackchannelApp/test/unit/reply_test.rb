@@ -1,7 +1,8 @@
 require 'test_helper'
 
 class ReplyTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "should require attributes" do
+    r = Reply.new
+    #assert !r.valid?
+  end
 end

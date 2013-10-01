@@ -3,11 +3,14 @@
 one:
   username: MyString
   password: MyString
-  name: MyString
-  role: MyString
+  role: Administrator
 
 two:
   username: MyString
   password: MyString
-  name: MyString
-  role: MyString
+  role: Administrator
+
+three:
+  username: MyString
+  password: MyString
+  role: Super Administrator
