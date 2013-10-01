@@ -1,6 +1,6 @@
 class StaticPagesController < ApplicationController
   #include ApplicationHelper
-  before_filter logged_in?, :except => [:login]
+  before_filter :logged_in?, :except => [:login]
 
   def search
        render "search"
