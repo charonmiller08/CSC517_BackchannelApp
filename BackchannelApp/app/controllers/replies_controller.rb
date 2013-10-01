@@ -20,17 +20,15 @@ class RepliesController < ApplicationController
     end
   end
 
-  # GET /replies/new_as
-  # GET /replies/new_as.json
+  # GET /replies/new
+  # GET /replies/new.json
   def new
-    @post_id = params[:post_id]
-    @reply = Reply.new
-
-
-    respond_to do |format|
-      format.html # login.html.erb
-      format.json { render json: @reply }
-    end
+    @post_id = params[:reply][:post_id]
+    #@post_id = params[:post_id]
+    @parent_post_id= params[:reply][:parent_post_id]
+    #@parent_post_id= params[:parent_post_id]
+    @reply = Reply.new()
+    create
   end
 
   # GET /replies/1/edit
@@ -42,11 +40,10 @@ class RepliesController < ApplicationController
   # POST /replies.json
   def create
     @reply = Reply.new(params[:reply])
-    #figure out how to get actual post id and user id
+    @reply.parent_post_id = params[:reply][:parent_post_id]
     @reply.post_id = params[:reply][:post_id]
-    @reply.user_id = @current_user.id
+    @post = Post.where(:id => @reply.parent_post_id).first
 
-    @post = Post.where(:id => @reply.post_id).first
 
     respond_to do |format|
       if @reply.save

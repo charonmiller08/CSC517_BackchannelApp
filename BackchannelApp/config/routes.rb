@@ -77,6 +77,7 @@ BackchannelApp::Application.routes.draw do
   match "search", :to => "sessions#search"
   match "vote", :to => "posts#vote"
 
+
   # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.

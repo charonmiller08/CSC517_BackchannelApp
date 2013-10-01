@@ -60,15 +60,25 @@ class PostsController < ApplicationController
   # GET /posts/1.json
   def show
     @post = Post.find(params[:id])
+
     array_of_primary_key = []
     @post_replies = Reply.where(:parent_post_id => @post.id).all
-    puts "WHAT DOES THIS LOOK LIKE?"
+    puts "WHAT DOES THIS LOOK LIKE NOW?"
     puts @post_replies
 
-    @replies = []
-    @post_replies.each do |p|
-      @replies << Post.find_by_id(p.post_id)
-    end
+    #if !@post_replies.blank?
+      puts "hello"
+      @replies = []
+      @post_replies.each do |p|
+        puts "post idddd"
+        puts p.post_id
+        @replies << Post.find_by_id(p.post_id)
+        puts @replies
+      end
+    #else
+      puts "bye"
+     # @replies = Reply.where(:parent_post_id => @post.id).all
+    #end
 
     respond_to do |format|
       format.html # show.html.erb
@@ -98,25 +108,25 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(params[:post])
     @post.user_id = @current_user.id
-    @created = @post
-    if params[:parent_post_id]
-      @reply = Reply.new()
-      @reply.parent_post_id = params[:parent_post_id]
-      @reply.post_id = @post.id
-      @created = @reply
-      @post = Post.where(:id => @reply.parent_post_id).first
 
-    end
-
-    respond_to do |format|
-      if @created.save
-        format.html { redirect_to @post, notice: 'Thank you for posting!' }
-        format.json { render json: @post, status: :created, location: @post }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
+      respond_to do |format|
+        if @post.save
+          if params[:parent_post_id]
+            #@parent_post_id = params[:parent_post_id]
+            #@post_id = @post.id
+            format.html {redirect_to controller: 'replies', action: 'new' , reply: {parent_post_id: params[:parent_post_id], post_id: @post.id}}
+            format.json { render json: @post, status: :created, location: @post }
+          else
+            format.html { redirect_to @post, notice: 'Thank you for posting!' }
+            format.json { render json: @post, status: :created, location: @post }
+          end
+        else
+          format.html { render action: "new" }
+          format.json { render json: @post.errors, status: :unprocessable_entity }
+        end
       end
-    end
+
+
   end
 
   # PUT /posts/1

@@ -31,7 +31,7 @@
 
 <br>
 <br>
-<%= link_to 'New Reply', {:controller => "replies", :action => "new", :post_id => @post.id} if logged_in? %>
+<%= link_to 'New Reply', {:controller => "posts", :action => "new", :parent_post_id => @post.id} if logged_in? %>
 <%= link_to 'Back', posts_path %>
 
 

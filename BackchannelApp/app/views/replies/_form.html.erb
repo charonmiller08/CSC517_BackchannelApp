@@ -1,30 +1,33 @@
-<%= form_for(@reply) do |f| %>
-  <% if @reply.errors.any? %>
+<%= form_for(@post) do |f| %>
+  <% if @post.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@reply.errors.count, "error") %> prohibited this reply from being saved:</h2>
+      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this reply from being saved:</h2>
 
       <ul>
-      <% @reply.errors.full_messages.each do |msg| %>
+      <% @post.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
 
-<div class="field">
-  <%= f.label :title %><br />
-  <%= f.text_field :title %>
+<div class = "field">
+  <%= f.label :title %>:<br />
+  <%= f.text_field :title, :value => Post.find(params[:parent_post_id]).title, :readonly => true %>
 </div>
-<div class="field">
-  <%= f.label :content %><br />
-  <%= f.text_area :content %>
+    <%= f.label :category %>:<br />
+    <%= text_field_tag "category", "#{Category.find_by_id(Post.find(params[:parent_post_id]).category_id).name}", :readonly => true %>
+    <%= f.hidden_field :category_id, :value => Post.find(params[:parent_post_id]).category_id %>
+<div class = "field">
+  <%= f.label :content %>:<br />
+  <%= f.text_area :content, :rows =>5 %>
 </div>
-<div class="field">
-  <%= f.label :tag %><br />
-  <%= f.text_field :tag%>
+<div class = "field">
+  <%= f.label :tag %>:<br />
+  <%= f.text_field :tag %>
 </div>
-<div class="actions">
-    <%= f.submit %>
-  </div>
-<%= f.hidden_field :post_id, :value => @post_id %>
+<%= hidden_field_tag "parent_post_id", params[:parent_post_id] %>
+<div class = "actions">
+<%= f.submit %>
+</div>
 <% end %>

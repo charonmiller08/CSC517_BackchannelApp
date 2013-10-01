@@ -8,7 +8,6 @@ class Post < ActiveRecord::Base
   validates :title, :presence => true
   validates :content, :presence => true
   validates :category_id, :presence => true
-  validates :tag, :presence => true
 
   def self.search(search_category, search)
     @posts = Post.all
