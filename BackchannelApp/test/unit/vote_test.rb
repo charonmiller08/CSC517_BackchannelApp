@@ -1,7 +1,8 @@
 require 'test_helper'
 
 class VoteTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "should require attributes" do
+    v = Vote.new
+    #assert !v.valid?
+  end
 end

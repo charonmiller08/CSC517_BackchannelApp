@@ -1,7 +1,8 @@
 require 'test_helper'
 
 class CategoryTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "should require attributes" do
+    c = Category.new
+    assert !c.valid?
+  end
 end
