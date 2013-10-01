@@ -7,6 +7,7 @@
     <td style = "width:150px"><%= User.find(reply.user_id).username %></td>
     <td style = "width:100px"><%= reply.tag %></td>
     <td style = "width:200px"><%= reply.updated_at %></td>
+    <td style = "width:100px"> Votes: <%=@number_of_votes_reply[reply] %></td>
     <td style = "width:200px" ><%= link_to 'Vote', {:controller => "votes", :action => "new", :post_id => reply.id} if logged_in? && !is_my_post?(reply.user_id) %>
     <%= link_to 'Edit', edit_reply_path(reply)  if is_admin? || is_my_post?(reply.user_id)%>
     <%= link_to 'Destroy', reply, method: :delete, data: { confirm: 'Are you sure?' }  if is_admin? || is_my_post?(reply.user_id)%></td>
@@ -14,7 +15,7 @@
  </table>
  <table border = "1">
    <tr>
-      <td style = "width:768px;height:100px ">
+      <td style = "width:868px;height:100px ">
         <%= reply.content %></td>
    </tr>
  </table>

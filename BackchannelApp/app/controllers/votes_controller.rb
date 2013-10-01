@@ -29,7 +29,6 @@ class VotesController < ApplicationController
   def new
     @post_id = params[:post_id]
     @vote = Vote.new
-    puts "IS THISSS WORKING?"
     create
     #respond_to do |format|
     #  format.html # login.html.erb
