@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
   before_filter :logged_in?
 
   def login
-    redirect_to home_url
+    redirect_to home_url  and return
     render :nothing => true
   end
 
