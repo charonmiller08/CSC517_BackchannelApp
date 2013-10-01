@@ -10,7 +10,7 @@
     <td style = "width:100px"> Votes: <%=@number_of_votes_reply[reply] %></td>
     <td style = "width:200px" ><%= link_to 'Vote', {:controller => "votes", :action => "new", :post_id => reply.id} if logged_in? && !is_my_post?(reply.user_id) %>
     <%= link_to 'Edit', edit_reply_path(reply)  if is_admin? || is_my_post?(reply.user_id)%>
-    <%= link_to 'Destroy', reply, method: :delete, data: { confirm: 'Are you sure?' }  if is_admin? || is_my_post?(reply.user_id)%></td>
+    <%= link_to 'Destroy', {:controller => "replies", :action => 'destroy', :id => Reply.find_by_post_id(reply.id).id}, :confirm => "Are you sure?", :method => :delete   if is_admin? || is_my_post?(reply.user_id)%></td>
   </tr>
  </table>
  <table border = "1">

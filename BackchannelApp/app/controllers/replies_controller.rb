@@ -76,10 +76,13 @@ class RepliesController < ApplicationController
   # DELETE /replies/1.json
   def destroy
     @reply = Reply.find(params[:id])
+    @post_id = @reply.post_id
     @reply.destroy
+    @post = Post.find(@post_id)
+    @post.destroy
 
     respond_to do |format|
-      format.html { redirect_to replies_url }
+      format.html { redirect_back_or(posts_url)}
       format.json { head :no_content }
     end
   end

@@ -1,3 +1,4 @@
+<h1>New Reply</h1>
 <%= form_for(@post) do |f| %>
   <% if @post.errors.any? %>
     <div id="error_explanation">
@@ -28,6 +29,6 @@
 </div>
 <%= hidden_field_tag "parent_post_id", params[:parent_post_id] %>
 <div class = "actions">
-<%= f.submit %>
+<%= f.submit "Create Reply" %>
 </div>
 <% end %>
