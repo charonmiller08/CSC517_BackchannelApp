@@ -3,6 +3,11 @@ require 'test_helper'
 class VotesControllerTest < ActionController::TestCase
   setup do
     @vote = votes(:one)
+    user = User.create(:username => "testUser", :password => "password", :role => "Administrator")
+    authorized_user = User.authenticate(user.username,user.password)
+    if authorized_user
+      session[:user_id] = authorized_user.id
+    end
   end
 
   test "should get index" do
@@ -11,8 +16,8 @@ class VotesControllerTest < ActionController::TestCase
     assert_not_nil assigns(:votes)
   end
 
-  test "should get new_as" do
-    get :new_as
+  test "should get new" do
+    get :new
     assert_response :success
   end
 
@@ -21,7 +26,9 @@ class VotesControllerTest < ActionController::TestCase
       post :create, vote: {  }
     end
 
-    assert_redirected_to vote_path(assigns(:vote))
+    #assert_redirected_to vote_path(assigns(:vote))
+    assert_redirected_to post_path(assigns(:vote))
+
   end
 
   test "should show vote" do

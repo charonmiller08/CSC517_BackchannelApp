@@ -3,6 +3,11 @@ require 'test_helper'
 class CategoriesControllerTest < ActionController::TestCase
   setup do
     @category = categories(:one)
+    user = User.create(:username => "testUser", :password => "password", :role => "Administrator")
+    authorized_user = User.authenticate(user.username,user.password)
+    if authorized_user
+      session[:user_id] = authorized_user.id
+    end
   end
 
   test "should get index" do
@@ -11,8 +16,8 @@ class CategoriesControllerTest < ActionController::TestCase
     assert_not_nil assigns(:categories)
   end
 
-  test "should get new_as" do
-    get :new_as
+  test "should get new" do
+    get :new
     assert_response :success
   end
 

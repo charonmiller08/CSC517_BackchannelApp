@@ -3,6 +3,11 @@ require 'test_helper'
 class RepliesControllerTest < ActionController::TestCase
   setup do
     @reply = replies(:one)
+    user = User.create(:username => "testUser", :password => "password", :role => "Administrator")
+    authorized_user = User.authenticate(user.username,user.password)
+    if authorized_user
+      session[:user_id] = authorized_user.id
+    end
   end
 
   test "should get index" do
