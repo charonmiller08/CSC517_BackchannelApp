@@ -43,13 +43,7 @@ class Post < ActiveRecord::Base
   end
   def self.search_by_username(search)
     @posts = Post.where(:user_id => User.where('username Like ?', "%#{search}%")).all
-    #search_category = User.where("username LIKE ?", "%#{search}%").first
-    #if search_category
-    #  @posts = Post.where(:user_id => search_category.id).all
-    #else
-    #  count = User.count(:id)  + 1
-    #  @posts = Post.where(:user_id => count)
-    #end
   end
 
-end
+
+  end

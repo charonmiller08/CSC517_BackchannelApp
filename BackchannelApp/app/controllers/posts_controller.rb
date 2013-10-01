@@ -7,22 +7,34 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     @number_of_votes = Hash.new
+    @sort_by_this = Hash.new
     @posts = Post.search(params[:name], params[:search])
     @posts.each do |p|
       @number_of_votes[p] = Vote.where(:post_id => p.id).count
+      @number_of_replies  = Reply.where(:parent_post_id => p.id).count
+      if p.updated_at.to_time < (Time.now - 1.minute)
+        @time_weight= 5
+      elsif p.updated_at.to_time < (Time.now - 1.hour)
+        @time_weight = 4
+      elsif p.updated_at.to_time < (Time.now - 1.day)
+        @time_weight = 3
+      elsif p.updated_at.to_time < (Time.now - 1.week)
+        @time_weight = 2
+      elsif p.updated_at.to_time < (Time.now - 1.month)
+        @time_weight = 1
+      else
+        @time.weight = 0
+      end
+      @sort_by_this[p.id] = (@number_of_votes[p] + @number_of_replies)*@time_weight
+    end
+    @sort_by_this.values.sort
+
+    @posts_sorted = Post.where(:id => nil).where("id IS NOT ?", nil)
+    @sort_by_this.each do |p|
+      @posts_sorted << Post.find(p[0])
     end
 
-    #if params[:search]
-      #@category_id = Category.where('name LIKE ?', '%#(params[:search])%').all
-    #  @posts = Post.where('content LIKE ?', "%#{params[:search]}%").all
-    #end
-   # search_class = params[:search_class]
-   # search_string = params[:search_string]
-    #if(search_string != nil)
-    #  if(search_class == Tag || search_class == Content)
-    #    @posts = Post.where('content LIKE ?', '%'+search_string+'%').all
-    #  end
-   # end
+    @posts = @posts_sorted
 
     respond_to do |format|
       format.html # index.html.erb
