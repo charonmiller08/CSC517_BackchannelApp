@@ -23,7 +23,7 @@ class PostsController < ApplicationController
       elsif p.updated_at.to_time < (Time.now - 1.month)
         @time_weight = 1
       else
-        @time.weight = 0
+        @time_weight = 0
       end
       @sort_by_this[p.id] = (@number_of_votes[p] + @number_of_replies)*@time_weight
     end
