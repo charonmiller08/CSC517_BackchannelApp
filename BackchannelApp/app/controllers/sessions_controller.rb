@@ -4,7 +4,8 @@ class SessionsController < ApplicationController
   before_filter :logged_in?
 
   def login
-    render "login"
+    redirect_to home_url
+    render :nothing => true
   end
 
   def login_attempt
@@ -17,7 +18,7 @@ class SessionsController < ApplicationController
     else
       flash[:notice] = "Invalid Username or Password"
       flash[:color]= "invalid"
-      render "login"
+      redirect_to login_url
     end
   end
 

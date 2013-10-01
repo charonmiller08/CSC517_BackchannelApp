@@ -1,8 +1,14 @@
 <h1> Home Page </h1>
 <p id="notice"><%= flash[:notice] %></p>
 
+<table>
+  <td><%= render 'login' if !logged_in?  %></td>
+</table>
+
 <tr><%= link_to "Edit Users", users_url if is_admin? %></tr>
 <tr><%= link_to "Edit Categories", categories_url if is_admin? %></tr>
+
+
 
 
 
