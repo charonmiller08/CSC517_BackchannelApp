@@ -3,7 +3,7 @@ require 'test_helper'
 class PostsControllerTest < ActionController::TestCase
   setup do
     @post = posts(:one)
-    user = User.create(:username => "testUser", :password => "password", :role => "Administrator")
+    user = User.create(:username => "testUser", :password => "password", :role => "Member")
     authorized_user = User.authenticate(user.username,user.password)
     if authorized_user
       session[:user_id] = authorized_user.id
@@ -16,8 +16,8 @@ class PostsControllerTest < ActionController::TestCase
     assert_not_nil assigns(:posts)
   end
 
-  test "should get new_as" do
-    get :new_as
+  test "should get new" do
+    get :new
     assert_response :success
   end
 

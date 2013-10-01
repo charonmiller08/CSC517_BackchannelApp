@@ -16,8 +16,8 @@ class VotesControllerTest < ActionController::TestCase
     assert_not_nil assigns(:votes)
   end
 
-  test "should get new_as" do
-    get :new_as
+  test "should get new" do
+    get :new
     assert_response :success
   end
 
@@ -26,7 +26,9 @@ class VotesControllerTest < ActionController::TestCase
       post :create, vote: {  }
     end
 
-    assert_redirected_to vote_path(assigns(:vote))
+    #assert_redirected_to vote_path(assigns(:vote))
+    assert_redirected_to post_path(assigns(:vote))
+
   end
 
   test "should show vote" do
