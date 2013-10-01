@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
     else
       flash[:notice] = "Invalid Username or Password"
       flash[:color]= "invalid"
-      redirect_to login_url
+      redirect_to home_url
     end
   end
 
