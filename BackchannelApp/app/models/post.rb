@@ -4,14 +4,15 @@ class Post < ActiveRecord::Base
   belongs_to :category
   belongs_to :user
   has_many :replies
+  has_many :votes
 
   validates :title, :presence => true
   validates :content, :presence => true
   validates :category_id, :presence => true
 
   def self.search(search_category, search)
-    #@posts = Post.all
-    puts "ARE YOU IN HERE?"
+    @posts = Post.all
+    #puts "ARE YOU IN HERE?"
     if search && search_category
 
       if search_category == "all"
@@ -30,14 +31,16 @@ class Post < ActiveRecord::Base
     else
       @posts = Post.all
     end
-    @replies = Reply.where(:id => nil).where("id IS NOT ?", nil)
-    @posts.each do |p|
-      if Reply.find_by_post_id(p.id)
-        @replies = @replies + Reply.where(p.id).all
-      end
-    end
-    @posts = @posts - @replies
 
+    @posts_which_are_replies = Reply.where("post_id IN (?)", @posts)
+
+    @post_which_are_replies_ids = []
+    @posts_which_are_replies.each do |v|
+      @post_which_are_replies_ids << v.post_id
+    end
+    puts "please work"
+    puts @post_replies
+    @posts = @posts - Post.where(:id => @post_which_are_replies_ids ).all
   end
 
   def self.search_by_category(search)

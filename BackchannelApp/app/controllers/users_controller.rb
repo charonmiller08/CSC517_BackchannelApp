@@ -26,6 +26,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @post_count = Post.where(:user_id => @user.id).count
     @vote_count = Vote.where(:user_id => @user.id).count
+    @vote_for_your_posts_count = Post.where(:user_id => @user.id).joins(:votes).count
 
     if !is_admin?
       if !(@user == @current_user)

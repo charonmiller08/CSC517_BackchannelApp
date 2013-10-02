@@ -1,5 +1,5 @@
 
-<h2 class='Post_Header'> <%=@current_user.username%> Profile <h2>
+<h2 class='Post_Header'> <%=@current_user.username%> <h2>
 <%= render 'form' if !params[:parent_post_id]%>
 <%= render 'replies/form' if params[:parent_post_id]%>
 
