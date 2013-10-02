@@ -29,6 +29,6 @@ class SessionsController < ApplicationController
     redirect_to home_url
   end
   def home
-
+     render "home"
   end
 end
