@@ -1,13 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  name: MyString
+  name: Category1
 
 two:
-  name: MyString
+  name: Category2
 
-<% 1000.times do |n| %>
-category_<%= n %>:
-  name: <%= "category#{n}" %>
+three:
+  name: Category3
 
-<% end %>

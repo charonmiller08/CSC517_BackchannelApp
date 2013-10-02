@@ -5,11 +5,11 @@
 # below each fixture, per the syntax in the comments below
 #
 one:
-  post: one
-  parent_post: one
+  post: two
+  parent_post: four
 # column: value
 #
 two:
-  post: two
+  post: five
   parent_post: one
 #  column: value

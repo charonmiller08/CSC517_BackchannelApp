@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class SearchTest < ActionDispatch::IntegrationTest
+class CreatePostTest < ActionDispatch::IntegrationTest
   test "creating a post" do
     u = User.create(:username => "user1", :password => "password")
     c = Category.create(:name => "Homework")
@@ -15,6 +15,6 @@ class SearchTest < ActionDispatch::IntegrationTest
     #select "Homework"
     #fill_in :post_content, :with => "When is homework 1 due?"
     #fill_in :post_tag, :with => "HW1"
-    click_button 'Create Post'
+    #click_button 'Create Post'
   end
 end
