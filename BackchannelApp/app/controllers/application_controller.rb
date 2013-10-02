@@ -122,13 +122,13 @@ class ApplicationController < ActionController::Base
 
   #If you are logged in you can't go to the login page or the signup page
   def save_login_state
+    #You are logged in
     if session[:user_id]
-
-      puts "I have a session too"
+      #go back home you can't log in twice!
       redirect_to(:controller => 'sessions', :action => 'home')
-
       return false
     else
+      #you aren't logged in so you may login or signup
       return true
     end
   end
