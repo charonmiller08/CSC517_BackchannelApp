@@ -1,36 +1,64 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  title: Post1
-  content: This is a post.
+  title: Post_1
+  content: A post.
   category: one
   user: one
   tag: Post
 
 two:
-  title: Post2
+  title: Post_2
   content: Another post.
-  category: two
+  category: one
   user: one
-  tag: Post, Category2
+  tag: Post
 
 three:
-  title: Post3 (Reply 1)
-  content: A reply to a post.
-  category: two
-  user: one
-  tag:
+  title: Post_3
+  content: This is post 3.
+  category: one
+  user: two
+  tag: Category_2
 
 four:
-  title: Post4
-  content: A post in Category 3.
-  category: three
-  user: two
-  tag: Post, Category3
+  title: Post_4
+  content: Post 4.
+  category: two
+  user: three
+  tag:
 
 five:
-  title: Post3 (Reply 2)
+  title: Post_5
+  content: Another post.
+  category: two
+  user: four
+  tag:
+
+six:
+  title: Post_6
+  content: Another post.
+  category: three
+  user: five
+  tag: Post, Category_3
+
+seven:
+  title: Reply to post 1.
+  content: Another reply.
+  category: one
+  user: two
+  tag:
+
+eight:
+  title: Reply to post 1.
   content: Another reply.
   category: one
   user: three
-  tag: Reply, Category1
+  tag:
+
+nine:
+  title: Reply to post 3.
+  content: Another reply.
+  category: three
+  user: five
+  tag: Reply

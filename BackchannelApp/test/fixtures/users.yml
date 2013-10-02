@@ -1,16 +1,27 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  username: user1
-  password: password
-  role: Member
-
-two:
-  username: user2
-  password: password
+  username: Anonymous
+  password: anonymous
   role: Administrator
 
-three:
-  username: user3
+two:
+  username: Admin_1
   password: password
   role: Super Administrator
+
+three:
+  username: member_1
+  password: password
+  role: member
+
+four:
+  username: member_2
+  password: password
+  role: member
+
+five:
+  username: member_3
+  password: password
+  role: member
+
