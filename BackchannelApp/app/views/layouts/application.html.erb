@@ -17,6 +17,7 @@
 <br>
 
     <%= link_to "Make a new Post", new_post_url if @current_user%>
+    <%= link_to "Run Report", runReport_url if is_admin? %>
 
 </body>
  <p>

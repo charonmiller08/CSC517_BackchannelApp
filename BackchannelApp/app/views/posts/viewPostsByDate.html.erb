@@ -1,0 +1,19 @@
+<% from_date = params[:from_date] %>
+<% to_date = params[:to_date] %>
+<% from_date = DateTime.new(from_date["from_date(1i)"].to_i, from_date["from_date(2i)"].to_i, from_date["from_date(3i)"].to_i, from_date["from_date(4i)"].to_i, from_date["from_date(5i)"].to_i) %>
+<% to_date = DateTime.new(to_date["to_date(1i)"].to_i, to_date["to_date(2i)"].to_i, to_date["to_date(3i)"].to_i, to_date["to_date(4i)"].to_i, to_date["to_date(5i)"].to_i) %>
+<h2>Reporting Posts by Between <%=from_date.to_time.to_s%> and <%= to_date.to_time.to_s %></h2>
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Content</th>
+    <th>Posted</th>
+  </tr>
+  <% @results.each do |result| %>
+      <tr>
+        <td><%= result['title'] %></td>
+        <td><%= result['content'] %></td>
+        <td><%= result['created_at'] %></td>
+      </tr>
+  <% end %>
+</table>

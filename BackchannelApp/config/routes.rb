@@ -76,6 +76,10 @@ BackchannelApp::Application.routes.draw do
   match "home", :to => "sessions#home"
   match "search", :to => "sessions#search"
   match "vote", :to => "posts#vote"
+  match "viewByVote", :to => "posts#viewPostsByVotes"
+  match "runReport", :to => "posts#runReport"
+  match "usersByPosts", :to => "posts#viewUsersByPosts"
+  match "postsByDate", :to => "posts#viewPostsByDate"
 
 
   # See how all your routes lay out with "rake routes"

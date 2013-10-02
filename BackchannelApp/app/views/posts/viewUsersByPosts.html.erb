@@ -1,0 +1,13 @@
+<h2>Reporting Posts per User</h2>
+<table>
+  <tr>
+    <th>User</th>
+    <th># of Posts</th>
+  </tr>
+  <% @results.each do |result| %>
+      <tr>
+        <td><%= result['username'] %></td>
+        <td><%= result['COUNT(user_id)'] %></td>
+      </tr>
+  <% end %>
+</table>

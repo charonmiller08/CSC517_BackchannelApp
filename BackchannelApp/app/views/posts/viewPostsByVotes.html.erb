@@ -1,0 +1,15 @@
+<h2>Reporting Posts by Votes</h2>
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Content</th>
+    <th># of Votes</th>
+  </tr>
+  <% @results.each do |result| %>
+      <tr>
+        <td><%= result['title'] %></td>
+        <td><%= result['content'] %></td>
+        <td><%= result['COUNT(post_id)'] %></td>
+      </tr>
+  <% end %>
+</table>

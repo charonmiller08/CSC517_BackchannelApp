@@ -1,0 +1,12 @@
+<h3>What type of report would you like to generate?</h3>
+<%= form_tag(:action => 'runReport') do %>
+    <%= radio_button_tag(:report_type, "1") %>
+    <%= label_tag(:posts_per_user, "View Posts per user") %><br /><br />
+    <%= radio_button_tag(:report_type, "2") %>
+    <%= label_tag(:votes_per_user, "View votes per post") %><br /><br />
+    <%= radio_button_tag(:report_type, "3") %>
+    <%= label_tag(:timeframe, "View posts in a given timeframe") %><br />
+    &nbsp;&nbsp;&nbsp;&nbsp;    From Date: <%= datetime_select(:from_date, :from_date) %><br />
+    &nbsp;&nbsp;&nbsp;&nbsp;    To Date: <%= datetime_select(:to_date, :to_date) %> <br /><br />
+    <%= submit_tag("Submit") %><br />
+<% end %>

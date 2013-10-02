@@ -133,4 +133,39 @@ class PostsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  # Query posts and votes and calculate the number of votes per post.
+  def viewPostsByVotes
+    @results = Array.new
+    @results = Post.find_by_sql('SELECT title, content, COUNT(post_id) FROM posts INNER JOIN votes ON posts.id = votes.post_id GROUP BY posts.id ORDER BY COUNT(post_id) DESC') #query for getting the number of votes per post
+  end
+
+# Query posts and users and calculate the number of posts per user.
+  def viewUsersByPosts
+    @results = Array.new
+    @results = Post.find_by_sql('SELECT username, COUNT(user_id) FROM users INNER JOIN posts ON users.id = posts.user_id GROUP BY users.id ORDER BY COUNT(user_id) DESC') #query for getting the number of posts per user
+  end
+
+# Query all posts and find the posts between created between the from_date and to_date datetime parameters.
+  def viewPostsByDate
+    from_date = params[:from_date] #from_date date parameter set in the runReport view
+    to_date = params[:to_date] #to_date date parameter set in the runReport view
+    from_date = DateTime.new(from_date["from_date(1i)"].to_i, from_date["from_date(2i)"].to_i, from_date["from_date(3i)"].to_i, from_date["from_date(4i)"].to_i, from_date["from_date(5i)"].to_i) #convert from_date to a datetime object
+    to_date = DateTime.new(to_date["to_date(1i)"].to_i, to_date["to_date(2i)"].to_i, to_date["to_date(3i)"].to_i, to_date["to_date(4i)"].to_i, to_date["to_date(5i)"].to_i) #convert to_date to a datetime object
+    @results = Array.new
+    @results = Post.where(["created_at >= ? AND created_at <= ?", from_date, to_date]) #query for getting posts created between from_date and to_date
+  end
+
+#Redirects to a report page based on the report selected to be run in the runReport view.
+  def runReport
+#Check the value of the report_type parameter and based on its value redirect to a view.
+    if params[:report_type] == '1'
+      redirect_to usersByPosts_url #Go to the viewUsersByPosts view
+    elsif params[:report_type] == '2'
+      redirect_to viewByVote_url #Go to the viewPostsByVote view
+    elsif params[:report_type] == '3'
+      redirect_to(postsByDate_url(:from_date => params[:from_date], :to_date => params[:to_date])) #Go to the viewPostsByDate view
+
+    end
+  end
 end
