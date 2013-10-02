@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class SearchTest < ActionDispatch::IntegrationTest
+class CreatePostTest < ActionDispatch::IntegrationTest
   test "creating a post" do
     u = User.create(:username => "user1", :password => "password")
     c = Category.create(:name => "Homework")
