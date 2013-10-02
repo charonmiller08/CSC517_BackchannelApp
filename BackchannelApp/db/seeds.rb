@@ -3,5 +3,7 @@
 #
 # Examples:
 #
+    User.create(:username => "Super", :password => "password", :role => "Super Administrator")
+    User.create(:username => "Anonymous", :password => "password", :role => "Administrator")
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)

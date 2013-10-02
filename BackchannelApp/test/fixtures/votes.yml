@@ -5,17 +5,17 @@
 # below each fixture, per the syntax in the comments below
 #
 one:
-  user: one
-  post: two
-
-two:
-  user: one
-  post: three
-
-three:
   user: two
   post: one
 
-four:
-  user: three
+two:
+  user: two
   post: two
+
+three:
+  user: three
+  post: one
+
+four:
+  user: five
+  post: three
