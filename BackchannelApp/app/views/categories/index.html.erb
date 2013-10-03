@@ -1,5 +1,5 @@
 <h1>Listing categories</h1>
-
+<p id="notice"><%= flash[:notice] %></p>
 <table>
   <tr>
     <th>Name</th>
@@ -9,12 +9,14 @@
   </tr>
 
   <% @categories.each do |category| %>
+      <% if category.name != "Anonymous" %>
       <tr>
         <td><%= category.name %></td>
         <td><%= link_to 'Show', category if is_admin? %></td>
         <td><%= link_to 'Edit', edit_user_path(category) if is_admin?%></td>
         <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' }  if is_admin?%></td>
       </tr>
+      <% end %>
   <% end %>
 </table>
 <br />
