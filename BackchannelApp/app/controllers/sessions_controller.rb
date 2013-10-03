@@ -33,12 +33,17 @@ class SessionsController < ApplicationController
     end
   end
 
+  #If a user is directed here when logging out.
   def logout
+    #Delete session for this :user_id this will log the user out
     session[:user_id] = nil
     flash[:notice] = "You have been successfully logged out"
     flash[:color] = "valid"
+    #Send the user back to home in case they want to log back in or use as a non-member
     redirect_to home_url
   end
+
+  #Simply render the home page when you link to home_url
   def home
      render "home"
   end

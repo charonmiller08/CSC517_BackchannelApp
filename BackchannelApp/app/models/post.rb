@@ -15,13 +15,13 @@ class Post < ActiveRecord::Base
     #puts "ARE YOU IN HERE?"
     if search && search_category
 
-      if search_category == "all"
-        @posts = Post.where('tag or content or title Like ?', "%#{search}%").all
-        @posts = @posts + search_by_username(search)
-        @posts = @posts + search_by_category(search)
-        @posts = @posts.uniq
+      #if search_category == "all"
+      #  @posts = Post.where('tag or content or title Like ?', "%#{search}%").all
+      #  @posts = @posts + search_by_username(search)
+      #  @posts = @posts + search_by_category(search)
+      #  @posts = @posts.uniq
 
-      elsif search_category == "username"
+      if search_category == "username"
         search_by_username(search)
       elsif search_category == "category"
         search_by_category(search)
