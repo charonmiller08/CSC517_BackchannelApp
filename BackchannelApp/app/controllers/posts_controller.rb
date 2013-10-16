@@ -78,6 +78,7 @@ class PostsController < ApplicationController
   # GET /posts/1/edit
   def edit
     @post = Post.find(params[:id])
+
   end
 
   # POST /posts
@@ -113,8 +114,15 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.update_attributes(params[:post])
-        format.html { redirect_to @post, notice: 'Post was successfully updated.' }
-        format.json { head :no_content }
+        if params[:parent_post_id]
+          @parent_post = Post.find(params[:parent_post_id])
+
+          format.html {redirect_to @parent_post, notice: 'Reply was successfully updated.'}
+          format.json { head :no_content }
+        else
+          format.html { redirect_to @post, notice: 'Post was successfully updated.' }
+          format.json { head :no_content }
+        end
       else
         format.html { render action: "edit" }
         format.json { render json: @post.errors, status: :unprocessable_entity }

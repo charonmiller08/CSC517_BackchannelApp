@@ -13,7 +13,6 @@ class RepliesController < ApplicationController
   def show
     @reply = Reply.find(params[:id])
 
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @reply }
@@ -33,8 +32,12 @@ class RepliesController < ApplicationController
 
   # GET /replies/1/edit
   def edit
-    params[:parent_post_id] = params[:id]
+    @reply = Reply.find_by_post_id(params[:id])
+
+    #params[:parent_post_id] = params[:id]
+    params[:parent_post_id] = @reply.parent_post_id
     @post = Post.find(params[:id])
+
   end
 
   # POST /replies
@@ -60,11 +63,11 @@ class RepliesController < ApplicationController
   # PUT /replies/1
   # PUT /replies/1.json
   def update
-    @reply = Reply.find(params[:id])
+    @post = Post.find(params[:id])
 
     respond_to do |format|
       if @reply.update_attributes(params[:reply])
-        format.html { redirect_to @reply, notice: 'Reply was successfully updated.' }
+        format.html { redirect_to @post, notice: 'Reply was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
