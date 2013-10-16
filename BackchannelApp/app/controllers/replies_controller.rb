@@ -33,7 +33,8 @@ class RepliesController < ApplicationController
 
   # GET /replies/1/edit
   def edit
-    @reply = Reply.find(params[:id])
+    params[:parent_post_id] = params[:id]
+    @post = Post.find(params[:id])
   end
 
   # POST /replies
