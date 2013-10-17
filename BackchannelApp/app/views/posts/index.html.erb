@@ -2,11 +2,9 @@
 <p id="notice"><%= flash[:notice] %></p>
 
 <%= form_tag posts_url, :method => 'get' do%>
-<p>
   <%= text_field_tag :search, params[:search]%>
- <%=select(params[:name], :name, ["category", "content", "title", "username", "tag", "content"])%>
+  <%=select(params[:name], :name, ["category", "content", "title", "username", "tag"])%>
   <%= submit_tag "Search", :name => nil %>
-</p>
 <% end %>
 
 
