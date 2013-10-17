@@ -8,8 +8,11 @@ class PostsController < ApplicationController
   def index
     @number_of_votes = Hash.new
     @sort_by_this = Hash.new
+
     @posts = Post.search(params[:name], params[:search])
+
     @posts.each do |p|
+      #@number_of_votes = Vote.where(:post_id => p.id).count
       @number_of_votes[p] = Vote.where(:post_id => p.id).count
       @number_of_replies  = Reply.where(:parent_post_id => p.id).count
       if p.updated_at.to_time < (Time.now - 1.minute)
@@ -25,16 +28,25 @@ class PostsController < ApplicationController
       else
         @time_weight = 0
       end
+      #@sort_by_this[p.id] = (@number_of_votes + @number_of_replies)*@time_weight
       @sort_by_this[p.id] = (@number_of_votes[p] + @number_of_replies)*@time_weight
+      puts "WHAT ARE YOU NOW"
+      puts @sort_by_this[p.id]
     end
-    @sort_by_this.values.sort
+    @sort_by_this = Hash[@sort_by_this.sort_by{|k,v| v}]
+    @sort_by_this_array = @sort_by_this.keys.reverse
+
 
     @posts_sorted = Post.where(:id => nil).where("id IS NOT ?", nil)
-    @sort_by_this.each do |p|
-      @posts_sorted << Post.find(p[0])
+    @sort_by_this_array.each do |p|
+      @posts_sorted << Post.find(p)
     end
 
     @posts = @posts_sorted
+
+    if !(params[:search] == nil)
+      flash.now[:notice] = "You searched by #{params[:name]} with search text \"#{params[:search]}\"."
+    end
 
     respond_to do |format|
       format.html # index.html.erb

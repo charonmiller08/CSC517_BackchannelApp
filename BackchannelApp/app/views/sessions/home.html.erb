@@ -6,11 +6,10 @@
 </table>
 <p> Search Posts </p>
 <%= form_tag posts_url, :method => 'get' do%>
-    <p>
-      <%= text_field_tag :search, params[:search]%>
-      <%=select(params[:name], :name, ["category", "content", "title", "username", "tag"])%>
-      <%= submit_tag "Search", :name => nil %>
-    </p>
+    <%= text_field_tag :search, params[:search]%>
+    <%= select_tag "name",options_for_select(["category", "content", "title", "username", "tag"])%>
+    <% params[:name] = @name %>
+    <%= submit_tag "Search", :name => nil %>
 <% end %>
 
 <tr><%= link_to "Edit Users", users_url if is_admin? %></tr>
