@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :save_login_state, :only => [:signup, :create]
+  before_filter :save_login_state, :only => [:signup] #, :create]
   before_filter :make_user_login, :except  => [:signup, :create]
   after_filter :store_location
 
@@ -52,6 +52,7 @@ class UsersController < ApplicationController
   # GET /users/new
   # GET /users/new.json
   def new
+    puts "ARE YOU IN HERE"
     if is_admin?
       if @superadmin_user
         @role_options = ["Administrator", "Member"]
@@ -63,12 +64,10 @@ class UsersController < ApplicationController
       return
     end
 
-
-
     @user = User.new
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html  #new.html.erb
       format.json { render json: @user }
     end
   end
@@ -90,10 +89,12 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
+    puts "WHAT ABOUT HERE"
     @user = User.new(params[:user])
     if !is_admin?
       @user.role = "Member"
     end
+
     respond_to do |format|
       if @user.save
           format.html { redirect_to @user, notice: 'User was successfully created.'}
