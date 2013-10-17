@@ -2,7 +2,11 @@ require 'integration_test_helper'
 require 'test_helper'
 
 class PostTest < ActionDispatch::IntegrationTest
-  test "viewing post" do
+  test "searching for a post" do
+
+  end
+
+  test "viewing all posts" do
 
   end
 
@@ -22,6 +26,10 @@ class PostTest < ActionDispatch::IntegrationTest
     click_link 'Log out'
   end
 
+  test "viewing a post" do
+
+  end
+
   test "editing a post as a valid user" do
     visit '/'
     fill_in 'username_or_email', :with => "member_1"
@@ -38,6 +46,10 @@ class PostTest < ActionDispatch::IntegrationTest
     click_button 'Update Post'
     assert page.has_content?("Post was successfully updated.")
     click_link 'Log out'
+  end
+
+  test "editing a post as admin" do
+
   end
 =begin
   test "destroying a post as a valid user" do
@@ -56,7 +68,11 @@ class PostTest < ActionDispatch::IntegrationTest
   end
 =end
 
-  test "up voting as a valid user" do
+  test "destroying a post as admin" do
+
+  end
+
+  test "up voting post as a valid user" do
 
   end
   test "unable to up vote a second time" do

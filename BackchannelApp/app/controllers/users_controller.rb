@@ -149,13 +149,9 @@ class UsersController < ApplicationController
       end
     end
     @posts = Post.where(:user_id => @user.id).all
-    @replies = Reply.where(:user_id => @user.id).all
     @anonymous = User.where(:username => 'Anonymous').first
     @posts.each do |p|
     p.update_attributes(:user_id => @anonymous.id)
-    end
-    @replies.each do |r|
-      r.update_attributes(:user_id => @anonymous.id)
     end
     @user.destroy
 
