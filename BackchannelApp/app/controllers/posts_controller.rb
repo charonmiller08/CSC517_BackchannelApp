@@ -36,6 +36,10 @@ class PostsController < ApplicationController
 
     @posts = @posts_sorted
 
+    if !(params[:search] == nil)
+      flash.now[:notice] = "You searched by #{params[:name]} with search text \"#{params[:search]}\"."
+    end
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @posts }
