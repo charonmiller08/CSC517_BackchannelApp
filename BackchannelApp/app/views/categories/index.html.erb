@@ -9,11 +9,11 @@
   </tr>
 
   <% @categories.each do |category| %>
-      <% if category.name != "Anonymous" %>
+      <% if category.name != "Deleted" %>
       <tr>
         <td><%= category.name %></td>
         <td><%= link_to 'Show', category if is_admin? %></td>
-        <td><%= link_to 'Edit', edit_user_path(category) if is_admin?%></td>
+        <td><%= link_to 'Edit', edit_category_path(category) if is_admin?%></td>
         <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' }  if is_admin?%></td>
       </tr>
       <% end %>

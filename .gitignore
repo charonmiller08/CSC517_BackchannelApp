@@ -22,3 +22,6 @@ BackchannelApp/Gemfile.lock
 BackchannelApp/db/schema.rb
 
 BackchannelApp/db/schema.rb
+public/uploads
+tmp
+logs

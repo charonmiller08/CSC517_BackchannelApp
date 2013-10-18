@@ -80,6 +80,13 @@ class CategoriesController < ApplicationController
   # DELETE /categories/1.json
   def destroy
     @category = Category.find(params[:id])
+    @posts = Post.where(:category_id => @category.id).all
+
+    @deleted = Category.where(:name => 'Deleted').first
+    @posts.each do |p|
+        p.update_attributes(:category_id => @deleted.id)
+    end
+
     @category.destroy
 
     respond_to do |format|
