@@ -2,37 +2,63 @@ require 'integration_test_helper'
 require 'test_helper'
 
 class ReplyFlowTest < ActionDispatch::IntegrationTest
-  test "making a reply as reply owner" do
-
+  test "making a reply as valid user" do
+    visit '/'
+    fill_in 'username_or_email', :with => "member_1"
+    fill_in 'login_password', :with => "password"
+    click_button 'Log In'
+    fill_in 'search', :with => "Post_1"
+    select 'title', :from => 'name'
+    click_button 'Search'
+    click_link 'Show'
+    click_link 'New Reply'
+    fill_in 'post_content', :with => "My new reply."
+    click_button 'Create Reply'
+    assert page.has_content?("Reply was successfully created.")
+    click_link 'Log out'
   end
-  test "making a reply as admin" do
 
+  test "editing a reply as a valid user" do
+    visit '/'
+    fill_in 'username_or_email', :with => "member_1"
+    fill_in 'login_password', :with => "password"
+    click_button 'Log In'
+    fill_in 'search', :with => "Post_1"
+    select 'title', :from => 'name'
+    click_button 'Search'
+    click_link 'Show'
+    click_link 'Edit'
+    fill_in 'post_content', :with => "An edited reply"
+    click_button 'Create Reply'
+    assert page.has_content?("Reply was successfully updated")
+    click_link 'Log out'
   end
-  test "unable to make reply as invalid user" do
 
+  test "deleting a reply as a valid user" do
+    visit '/'
+    fill_in 'username_or_email', :with => "member_1"
+    fill_in 'login_password', :with => "password"
+    click_button 'Log In'
+    fill_in 'search', :with => "Post_1"
+    select 'title', :from => 'name'
+    click_button 'Search'
+    click_link 'Show'
+    click_link 'Destroy'
+    click_link 'Log out'
   end
-  test "editing a reply as reply owner" do
 
+  test "voting for reply as a valid user" do
+    visit '/'
+    fill_in 'username_or_email', :with => "member_1"
+    fill_in 'login_password', :with => "password"
+    click_button 'Log In'
+    fill_in 'search', :with => "Post_3"
+    select 'title', :from => 'name'
+    click_button 'Search'
+    click_link 'Show'
+    click_link 'Vote', :match => :first
+    assert page.has_content?("Thank you")
+    click_link 'Log out'
   end
-  test "editing a reply as admin" do
 
-  end
-  test "unable to edit reply as invalid user" do
-
-  end
-  test "deleting a reply as reply owner" do
-
-  end
-  test "deleting a reply as admin" do
-
-  end
-  test "unable to delete reply as invalid user" do
-
-  end
-  test "voting for reply by non-reply-owner" do
-
-  end
-  test "unable to vote for reply by reply owner" do
-
-  end
 end

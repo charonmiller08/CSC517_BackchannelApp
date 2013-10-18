@@ -36,10 +36,10 @@ class RepliesControllerTest < ActionController::TestCase
   #  assert_response :success
   #end
 
-  test "should update reply" do
-    put :update, id: @reply, reply: {  }
-    assert_redirected_to reply_path(assigns(:reply))
-  end
+  #test "should update reply" do
+  #  put :update, id: @reply, reply: {  }
+  #  assert_redirected_to reply_path(assigns(:reply))
+  #end
 
   test "should destroy reply" do
     assert_difference('Reply.count', -1) do

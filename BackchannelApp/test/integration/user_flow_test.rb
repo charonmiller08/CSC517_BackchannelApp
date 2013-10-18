@@ -15,13 +15,11 @@ class UserFlowTest < ActionDispatch::IntegrationTest
 
   test "signing up as a valid user" do
     visit '/'
-    #save_and_open_page
     click_link 'Not a member?'
     assert page.has_content?("Sign Up")
     fill_in 'user_username', :with => "newTestUser"
     fill_in 'user_password', :with => "password"
     fill_in 'user_password_confirmation', :with => "password"
-    #save_and_open_page
     click_button 'Signup'
     assert page.has_content?("Home Page")
   end
@@ -43,7 +41,7 @@ class UserFlowTest < ActionDispatch::IntegrationTest
     fill_in 'login_password', :with => ""
     click_button 'Log In'
     assert page.has_content?("Invalid")
-    click_link 'Log out'
+
   end
 
   test "viewing user profile" do
@@ -52,28 +50,18 @@ class UserFlowTest < ActionDispatch::IntegrationTest
     fill_in 'login_password', :with => "password"
     click_button 'Log In'
     click_link 'Profile'
-    assert page.has_content?("username")
+    assert page.has_content?("Username")
     click_link 'Log out'
   end
 
   test "deleting user" do
-    visit '/'
-    #save_and_open_page
-    click_link 'Not a member?'
-    assert page.has_content?("Sign Up")
-    fill_in 'user_username', :with => "newTestUser"
-    fill_in 'user_password', :with => "password"
-    fill_in 'user_password_confirmation', :with => "password"
-    #save_and_open_page
-    click_button 'Signup'
-
     visit '/'
     fill_in 'username_or_email', :with => "member_1"
     fill_in 'login_password', :with => "password"
     click_button 'Log In'
     click_link 'Profile'
     click_link 'Delete'
-    click_link 'Log out'
+    assert page.has_content?("Log in")
   end
 
 

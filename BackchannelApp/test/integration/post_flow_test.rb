@@ -3,11 +3,17 @@ require 'test_helper'
 
 class PostTest < ActionDispatch::IntegrationTest
   test "searching for a post" do
-
+    visit '/'
+    fill_in 'search', :with => ""
+    select 'category', :from => 'name'
+    click_button 'Search'
+    assert page.has_content?("Listing Posts")
   end
 
   test "viewing all posts" do
-
+    visit '/'
+    click_link 'Show All Posts'
+    assert page.has_content?("Listing Posts")
   end
 
   test "making a new post as a valid user" do
@@ -27,7 +33,10 @@ class PostTest < ActionDispatch::IntegrationTest
   end
 
   test "viewing a post" do
-
+    visit '/'
+    click_link 'Show All Posts'
+    click_link 'Show', :match => :first
+    assert page.has_content?("Post")
   end
 
   test "editing a post as a valid user" do
@@ -48,10 +57,7 @@ class PostTest < ActionDispatch::IntegrationTest
     click_link 'Log out'
   end
 
-  test "editing a post as admin" do
 
-  end
-=begin
   test "destroying a post as a valid user" do
     visit '/'
     fill_in 'username_or_email', :with => "member_1"
@@ -63,23 +69,21 @@ class PostTest < ActionDispatch::IntegrationTest
     fill_in 'post_content', :with => "This is another test post."
     click_button 'Create Post'
     click_link 'Destroy'
-    assert page.has_content('Listing Posts')
+    assert page.has_content?('Listing Posts')
     click_link 'Log out'
   end
-=end
 
-  test "destroying a post as admin" do
-
-  end
 
   test "up voting post as a valid user" do
-
-  end
-  test "unable to up vote a second time" do
-
-  end
-  test "unable to up vote own post" do
-
+    visit '/'
+    fill_in 'username_or_email', :with => "member_1"
+    fill_in 'login_password', :with => "password"
+    click_button 'Log In'
+    fill_in 'search', :with => "Post_3"
+    select 'title', :from => 'name'
+    click_button 'Search'
+    click_link 'Vote'
+    click_link 'Log out'
   end
 
 end
